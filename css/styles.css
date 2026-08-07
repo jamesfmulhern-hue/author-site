@@ -406,22 +406,6 @@ p { text-wrap: pretty; max-width: 68ch; }
   gap: var(--space-3);
 }
 
-.theme-toggle {
-  width: 38px; height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-gold);
-  transition: background var(--transition-interactive), border-color var(--transition-interactive);
-}
-
-.theme-toggle:hover {
-  background: var(--color-surface-2);
-  border-color: var(--color-gold);
-}
-
 .menu-toggle { display: none; }
 
 @media (max-width: 760px) {
@@ -3160,7 +3144,6 @@ a.btn,
 .deco-rule svg,
 .brand-mark,
 .footer-mark,
-.theme-toggle svg,
 .menu-toggle svg {
   stroke-width: 1.85 !important;
 }
