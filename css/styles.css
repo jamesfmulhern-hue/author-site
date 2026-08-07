@@ -552,12 +552,12 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr;
   gap: clamp(var(--space-8), 5vw, var(--space-16));
   align-items: center;
   position: relative;
   z-index: 1;
-  max-width: var(--content-wide);
+  max-width: var(--content-default);
   margin-inline: auto;
   padding: clamp(var(--space-8), 6vw, var(--space-16));
 }
