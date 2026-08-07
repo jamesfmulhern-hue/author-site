@@ -318,6 +318,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 .container-narrow { max-width: var(--content-narrow); }
 
 .section { padding-block: clamp(var(--space-16), 10vw, var(--space-32)); }
+.closing-deco { padding-block: var(--space-10); }
 
 /* ==========================================================================
    Header / Nav
@@ -552,12 +553,12 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: clamp(var(--space-8), 5vw, var(--space-16));
   align-items: center;
   position: relative;
   z-index: 1;
-  max-width: var(--content-default);
+  max-width: var(--content-wide);
   margin-inline: auto;
   padding: clamp(var(--space-8), 6vw, var(--space-16));
 }
@@ -866,6 +867,19 @@ p { text-wrap: pretty; max-width: 68ch; }
     0 30px 60px rgba(107,31,36,0.18);
   border: 1px solid color-mix(in oklab, var(--color-oxblood) 30%, transparent);
 }
+
+.photo-cover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.photo-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 [data-theme="dark"] .featured-book-image .book-cover,
 [data-theme="dark"] .book-card-cover .book-cover {
   background: linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface-deep) 100%);
@@ -1171,6 +1185,12 @@ p { text-wrap: pretty; max-width: 68ch; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: clamp(var(--space-8), 4vw, var(--space-12));
+}
+
+@media (min-width: 960px) {
+  .books-grid .book-card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
 }
 
 .book-card {
@@ -2169,6 +2189,27 @@ em em, em cite, i em, i cite, cite em {
   color: var(--color-oxblood);
   line-height: 1;
   white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .deco-plaque {
+    display: flex;
+    width: min(100%, 25rem);
+    padding-inline: var(--space-5);
+    gap: var(--space-3);
+  }
+
+  .deco-plaque-rule {
+    width: 1rem;
+    flex: 0 1 1rem;
+  }
+
+  .deco-plaque-text {
+    white-space: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+    line-height: 1.35;
+  }
 }
 
 [data-theme="dark"] .deco-plaque-text { color: var(--color-oxblood-bright); }
