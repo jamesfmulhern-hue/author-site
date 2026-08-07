@@ -1188,8 +1188,8 @@ p { text-wrap: pretty; max-width: 68ch; }
 }
 
 @media (min-width: 960px) {
-  .books-grid .book-card:last-child:nth-child(3n + 1) {
-    grid-column: 2;
+  .books-grid > .book-card:nth-child(7) {
+    grid-column: 2 / span 1;
   }
 }
 
