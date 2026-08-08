@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All My Sites &mdash; James Mulhern &amp; Silver Current Press</title>
+<meta name="description" content="A complete map of James Mulhern's web properties: Silver Current Press, The 2601 Literary Salon, The Art of Telling, submission guides, the press kit, and more.">
+<meta name="keywords" content="James Mulhern websites, Silver Current Press, 2601 Literary Salon, Art of Telling, writer resources, submission guides, press kit">
+<meta name="author" content="James Mulhern">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.authorjamesmulhern.com/sites.html">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="James Mulhern">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.authorjamesmulhern.com/sites.html">
+<meta property="og:title" content="All My Sites &mdash; James Mulhern">
+<meta property="og:description" content="A complete map of James Mulhern's web properties, from Silver Current Press to the classroom whiteboard.">
+<meta property="og:image" content="https://www.authorjamesmulhern.com/images/hero.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1536">
+<meta property="og:image:alt" content="Art Deco still life: a maroon leather book and dark green fountain pen, framed by an ornate gold panel &mdash; the official site of novelist James Mulhern">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All My Sites &mdash; James Mulhern">
+<meta name="twitter:description" content="A complete map of James Mulhern's web properties, from Silver Current Press to the classroom whiteboard.">
+<meta name="twitter:image" content="https://www.authorjamesmulhern.com/images/hero.png">
+<meta name="twitter:image:alt" content="Art Deco still life &mdash; the official site of novelist James Mulhern">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4ecd9'/%3E%3Cg stroke='%236b1f24' stroke-width='1.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M16 6 L22 16 L16 26 L10 16 Z'/%3E%3Cpath d='M16 10 V22 M11 16 H21'/%3E%3C/g%3E%3C/svg%3E">
+
+<style>
+  /* Page-scoped styles for the sites directory — built from existing design tokens */
+  .sites-group { margin-bottom: clamp(var(--space-12), 6vw, var(--space-16)); }
+  .sites-group:last-child { margin-bottom: 0; }
+  .sites-group-title { text-align: center; margin-bottom: clamp(var(--space-8), 4vw, var(--space-10)); }
+  .sites-group-title h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-oxblood);
+    margin: 0 0 var(--space-2);
+  }
+  .sites-group-title p {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--color-text-muted);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .site-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+  .site-card {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: var(--space-6) var(--space-6) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .site-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-brass);
+    box-shadow: 0 14px 30px -18px rgba(42, 30, 31, 0.35);
+  }
+  .site-card-mark {
+    width: 28px;
+    height: 28px;
+    color: var(--color-brass);
+    flex-shrink: 0;
+  }
+  .site-card-domain {
+    font-family: var(--font-ui);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    color: var(--color-forest);
+  }
+  .site-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.25;
+  }
+  .site-card-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+    margin: 0;
+  }
+  .site-card-link {
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-oxblood);
+    text-decoration: none;
+    border-top: 1px solid var(--color-divider);
+    padding-top: var(--space-3);
+    margin-top: var(--space-1);
+  }
+  .site-card-link::after { content: " \2192"; }
+  .site-card-link:hover { color: var(--color-brass-deep); }
+  .site-card-here {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+    background: var(--color-forest-soft);
+    padding: 2px 8px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+</style>
+</head>
+<body>
+<!-- return-to-salon ribbon -->
+<div id="scp-return-ribbon" style="
+  background: #10182E;
+  color: #F8F1DD;
+  text-align: center;
+  padding: 10px 16px;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 3px solid #6E4A0E;
+  position: relative;
+  z-index: 9999;
+">
+  <a href="https://salon.silvercurrentpress.com"
+     style="color: #F8F1DD; text-decoration: none; display:inline-flex; align-items:center; gap:8px;"
+     onmouseover="this.style.color='#F0D080'"
+     onmouseout="this.style.color='#F8F1DD'">
+    <span style="font-size:16px; line-height:1;">&#8592;</span>
+    <span>Back to <strong style="color:#F0D080;">The 2601 Salon</strong></span>
+  </a>
+</div>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="James Mulhern, home">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M16 4 L24 16 L16 28 L8 16 Z"/>
+        <path d="M16 8 V24 M10 16 H22"/>
+        <path d="M16 4 L19 9 M16 4 L13 9 M16 28 L19 23 M16 28 L13 23"/>
+      </svg>
+      <span>James Mulhern</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="essays.html">Essays</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="musings.html">Musings</a></li>
+      <li><a href="submissions.html">Submissions <span class="nav-closed-tag">(Closed)</span></a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+<main>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="page-header-eyebrow">A Guide for Readers, Writers &amp; Students</p>
+      <h1>All My Sites</h1>
+      <p>One writer, one small press, and a scattering of classrooms and reading rooms across the internet. This page is the map &mdash; where to go for the books, the courses, the submission guidelines, and everything in between.</p>
+    </div>
+  </section>
+
+  <!-- The Press & The Salon -->
+  <section class="section">
+    <div class="container">
+      <div class="sites-group">
+        <div class="sites-group-title">
+          <div class="deco-plaque" role="presentation">
+            <span class="deco-plaque-rule"></span>
+            <span class="deco-plaque-text">The Press &amp; The Salon</span>
+            <span class="deco-plaque-rule"></span>
+          </div>
+          <h2>Where the Books Get Made</h2>
+          <p>The publishing house, its literary gathering place, and the library it curates.</p>
+        </div>
+        <div class="site-grid fade-in">
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M16 4 L24 16 L16 28 L8 16 Z"/><path d="M16 8 V24 M10 16 H22"/></svg>
+            <span class="site-card-domain">silvercurrentpress.com</span>
+            <h3 class="site-card-title">Silver Current Press</h3>
+            <p class="site-card-desc">The independent press I founded to publish the kind of literary fiction, poetry, and nonfiction that big houses rarely take a chance on anymore &mdash; including my own.</p>
+            <a class="site-card-link" href="https://silvercurrentpress.com" target="_blank" rel="noopener">Visit the press</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 8 L16 16 L21 19"/></svg>
+            <span class="site-card-domain">salon.silvercurrentpress.com</span>
+            <h3 class="site-card-title">The 2601 Literary Salon</h3>
+            <p class="site-card-desc">Named for a Boston street address that keeps resurfacing in my fiction, this is where serious readers and writers gather for courses, craft talks, and a standing invitation to argue about books.</p>
+            <a class="site-card-link" href="https://salon.silvercurrentpress.com" target="_blank" rel="noopener">Enter the salon</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="7" y="6" width="18" height="20" rx="1"/><path d="M11 11 H21 M11 15 H21 M11 19 H17"/></svg>
+            <span class="site-card-domain">shortstories.silvercurrentpress.com</span>
+            <h3 class="site-card-title">The Mulhern Story Library</h3>
+            <p class="site-card-desc">A growing shelf of short fiction, chosen and annotated the way I&rsquo;d hand a story to a student and say, &ldquo;Read this one twice.&rdquo;</p>
+            <a class="site-card-link" href="https://shortstories.silvercurrentpress.com" target="_blank" rel="noopener">Browse the library</a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Teaching & Courses -->
+      <div class="sites-group">
+        <div class="sites-group-title">
+          <div class="deco-plaque" role="presentation">
+            <span class="deco-plaque-rule"></span>
+            <span class="deco-plaque-text">Teaching &amp; Courses</span>
+            <span class="deco-plaque-rule"></span>
+          </div>
+          <h2>Where the Craft Gets Taught</h2>
+          <p>Three decades of classroom experience, distilled into courses, companions, and a live tool built for my own students.</p>
+        </div>
+        <div class="site-grid fade-in">
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 24 V10 L16 6 L26 10 V24"/><path d="M6 24 H26 M16 6 V24"/></svg>
+            <span class="site-card-domain">art-of-telling.com</span>
+            <h3 class="site-card-title">The Art of Telling</h3>
+            <p class="site-card-desc">Ten sessions built from thirty years in the classroom &mdash; the exact sequence I use to turn a promising sentence into a finished story.</p>
+            <a class="site-card-link" href="https://art-of-telling.com" target="_blank" rel="noopener">Explore the course</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M8 6 H24 V26 L16 21 L8 26 Z"/></svg>
+            <span class="site-card-domain">companion.art-of-telling.com</span>
+            <h3 class="site-card-title">The Art of Telling Companion</h3>
+            <p class="site-card-desc">The workbook that travels alongside the course &mdash; exercises, annotated examples, and the homework I actually assign.</p>
+            <a class="site-card-link" href="https://companion.art-of-telling.com" target="_blank" rel="noopener">Open the companion</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="7" width="22" height="15" rx="1"/><path d="M12 26 H20 M16 22 V26"/></svg>
+            <span class="site-card-domain">whiteboard.silvercurrentpress.com</span>
+            <h3 class="site-card-title">Professor Mulhern&rsquo;s Whiteboard</h3>
+            <p class="site-card-desc">A live, real-time whiteboard built for my own classroom &mdash; where a lesson on metaphor can turn, mid-sentence, into a full-class discussion.</p>
+            <a class="site-card-link" href="https://whiteboard.silvercurrentpress.com" target="_blank" rel="noopener">Open the whiteboard</a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- For Writers Considering Submission -->
+      <div class="sites-group">
+        <div class="sites-group-title">
+          <div class="deco-plaque" role="presentation">
+            <span class="deco-plaque-rule"></span>
+            <span class="deco-plaque-text">For Writers Considering Submission</span>
+            <span class="deco-plaque-rule"></span>
+          </div>
+          <h2>Before You Send Your Pages</h2>
+          <p>Field guides written from the other side of the slush pile, one for each form Silver Current Press publishes.</p>
+        </div>
+        <div class="site-grid fade-in">
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M16 26 C10 20 6 15 6 11 A5 5 0 0 1 16 9 A5 5 0 0 1 26 11 C26 15 22 20 16 26 Z"/></svg>
+            <span class="site-card-domain">submittingmemoirs.silvercurrentpress.com</span>
+            <h3 class="site-card-title">Memoir &amp; Personal Essay Submissions</h3>
+            <p class="site-card-desc">What actually happens to a memoir manuscript after you hit submit &mdash; written for writers tired of guessing.</p>
+            <a class="site-card-link" href="https://submittingmemoirs.silvercurrentpress.com" target="_blank" rel="noopener">Read the guide</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M8 8 L24 24 M8 24 L24 8"/><circle cx="16" cy="16" r="11"/></svg>
+            <span class="site-card-domain">submittingshortstories.silvercurrentpress.com</span>
+            <h3 class="site-card-title">Short Story Submissions</h3>
+            <p class="site-card-desc">A short-story writer&rsquo;s field guide to Silver Current Press &mdash; what we&rsquo;re looking for, and what quietly gets a manuscript rejected.</p>
+            <a class="site-card-link" href="https://submittingshortstories.silvercurrentpress.com" target="_blank" rel="noopener">Read the guide</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M16 6 C11 10 9 14 9 18 A7 7 0 0 0 23 18 C23 14 21 10 16 6 Z"/></svg>
+            <span class="site-card-domain">publishingpoetry.silvercurrentpress.com</span>
+            <h3 class="site-card-title">Publishing Poetry</h3>
+            <p class="site-card-desc">Notes from the other side of the slush pile, after decades of reading &mdash; and judging &mdash; poetry submissions.</p>
+            <a class="site-card-link" href="https://publishingpoetry.silvercurrentpress.com" target="_blank" rel="noopener">Read the guide</a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- For Press, Booksellers & Readers -->
+      <div class="sites-group">
+        <div class="sites-group-title">
+          <div class="deco-plaque" role="presentation">
+            <span class="deco-plaque-rule"></span>
+            <span class="deco-plaque-text">Press, Booksellers &amp; Readers</span>
+            <span class="deco-plaque-rule"></span>
+          </div>
+          <h2>Everything Else You Might Need</h2>
+        </div>
+        <div class="site-grid fade-in">
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="6" y="6" width="20" height="20" rx="1"/><path d="M12 12 H20 M12 16 H20 M12 20 H17"/></svg>
+            <span class="site-card-domain">jamesfmulhern-hue.github.io/press-kit</span>
+            <h3 class="site-card-title">Press Kit</h3>
+            <p class="site-card-desc">Everything a journalist, reviewer, or bookseller needs in one place &mdash; bios, high-resolution covers, and the blurbs booksellers actually quote.</p>
+            <a class="site-card-link" href="https://jamesfmulhern-hue.github.io/press-kit/" target="_blank" rel="noopener">Open the press kit</a>
+          </article>
+
+          <article class="site-card">
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M9 12 L16 6 L23 12 V26 H9 Z"/><path d="M14 26 V19 H18 V26"/></svg>
+            <span class="site-card-domain">amazon.com</span>
+            <h3 class="site-card-title">Amazon Author Page</h3>
+            <p class="site-card-desc">Every book I&rsquo;ve published, gathered under one listing &mdash; the fastest way to see the whole shelf at once.</p>
+            <a class="site-card-link" href="https://www.amazon.com/stores/author/B00HS4D2AQ" target="_blank" rel="noopener">See the books</a>
+          </article>
+
+          <article class="site-card">
+            <span class="site-card-here">You Are Here</span>
+            <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M16 4 L24 16 L16 28 L8 16 Z"/><path d="M16 8 V24 M10 16 H22"/></svg>
+            <span class="site-card-domain">authorjamesmulhern.com</span>
+            <h3 class="site-card-title">The Author Site</h3>
+            <p class="site-card-desc">Books, essays, sample writing, and the press kit &mdash; the home base this very map lives on.</p>
+            <a class="site-card-link" href="index.html">Back to the homepage</a>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <svg class="footer-mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M24 6 L36 24 L24 42 L12 24 Z"/>
+        <path d="M24 12 V36 M16 24 H32"/>
+        <path d="M24 6 L28 12 M24 6 L20 12 M24 42 L28 36 M24 42 L20 36"/>
+        <circle cx="24" cy="24" r="3"/>
+      </svg>
+      <p class="footer-name">James Mulhern</p>
+      <p class="footer-tagline">&quot;A luminous, beautifully told fairy tale grounded in history and elevated by spirit.&quot; &mdash; <em>Kirkus Reviews</em></p>
+      <p class="footer-links"><a href="press-kit.html">Press Kit</a> &middot; <a href="sites.html">All My Sites</a> &middot; <a href="guides.html">Student Guides</a> &middot; <a href="services.html">Services</a> &middot; <a href="mailto:jamesfmulhern@gmail.com">Contact</a> &middot; <a href="https://www.amazon.com/stores/author/B00HS4D2AQ" target="_blank" rel="noopener">Amazon Author Page</a></p>
+      <p class="footer-meta">&copy; <span id="year"></span> &middot; Philadelphia &middot; Silver Current Press &middot; All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/main.js"></script>
+<div style="background:#f8f5ee;border-top:1px solid #d4c9a4;padding:16px 20px;text-align:center;font-family:'EB Garamond','Cinzel',Georgia,serif;font-size:0.9rem;color:#5a5a5a">
+  Silver Current Press family: <a href="https://silvercurrentpress.com" style="color:#7c2d2d">Silver Current Press</a> &middot; <a href="https://salon.silvercurrentpress.com" style="color:#7c2d2d">The 2601 Salon</a> &middot; <a href="https://salon.silvercurrentpress.com/partners.html" style="color:#7c2d2d">For Program Partners</a>
+</div>
+</body>
+</html>
