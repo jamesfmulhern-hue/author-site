@@ -366,9 +366,10 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .nav-links {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-6);
   list-style: none;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .nav-links a {
@@ -409,7 +410,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .menu-toggle { display: none; }
 
-@media (max-width: 760px) {
+@media (max-width: 1300px) {
   .nav-links { display: none; }
   .nav-links.open {
     display: flex;
