@@ -348,7 +348,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   padding: var(--space-4) var(--space-6);
   max-width: var(--content-wide);
   margin-inline: auto;
-  gap: var(--space-6);
+  gap: clamp(var(--space-3), 2vw, var(--space-6));
 }
 
 .brand {
@@ -367,7 +367,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .nav-links {
   display: flex;
-  gap: var(--space-6);
+  gap: clamp(0.85rem, 1.4vw, var(--space-6));
   list-style: none;
   align-items: center;
   flex-wrap: nowrap;
@@ -412,7 +412,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .menu-toggle { display: none; }
 
-@media (max-width: 1700px) {
+@media (max-width: 1360px) {
   .nav-links { display: none; }
   .nav-links.open {
     display: flex;
@@ -556,7 +556,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: clamp(var(--space-8), 5vw, var(--space-16));
   align-items: center;
   position: relative;
@@ -631,6 +631,8 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .hero-image {
   position: relative;
+  width: 100%;
+  min-width: 0;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(20,30,18,0.18);
