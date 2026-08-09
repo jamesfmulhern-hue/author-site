@@ -3700,3 +3700,39 @@ hr,
   line-height:1.55;
 }
 .press-service p strong{ color:#4a1417; }
+/* ---------------------------------------------------------------
+   Study note — a bordered aside for printable editions and
+   supplementary downloads (used on essay and study pages).
+   --------------------------------------------------------------- */
+.study-note {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-6);
+  padding: var(--space-6) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-left: 3px solid var(--color-oxblood);
+  border-radius: 2px;
+}
+
+.study-note p {
+  text-indent: 0;
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+}
+
+.study-note p + p {
+  margin-top: var(--space-4);
+}
+
+.study-note strong {
+  color: var(--color-oxblood);
+  font-family: var(--font-display, inherit);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  .study-note {
+    padding: var(--space-5) var(--space-4);
+    margin-top: var(--space-8);
+  }
+}
