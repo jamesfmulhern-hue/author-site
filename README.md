@@ -1,6 +1,6 @@
-# James F. Mulhern — Author Site
+# James Mulhern — Author Site
 
-The official site of James F. Mulhern — Kirkus-starred novelist, Pushcart-nominated poet, Oxford Writing Fellow, and founder of Silver Current Press.
+The official site of James Mulhern — Kirkus-starred novelist, Pushcart-nominated poet, Oxford Writing Fellow, and founder of Silver Current Press.
 
 **Live site:** [https://www.authorjamesmulhern.com](https://www.authorjamesmulhern.com)
 
@@ -14,4 +14,4 @@ The official site of James F. Mulhern — Kirkus-starred novelist, Pushcart-nomi
 
 ## Copyright
 
-© James F. Mulhern & Silver Current Press.
+© James Mulhern & Silver Current Press.
