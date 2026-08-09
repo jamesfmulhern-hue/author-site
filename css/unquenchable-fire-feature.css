@@ -1,0 +1,210 @@
+/* ==========================================================================
+   UNQUENCHABLE FIRE — page-specific additions
+   Extends the base James Mulhern Art Deco design system (styles.css).
+   ========================================================================== */
+
+/* At-a-glance label reused from press-kit.html inline styles */
+.glance-label {
+  font-family: var(--font-ui);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  color: var(--color-forest);
+  padding-top: 0.3em;
+}
+
+/* ==========================================================================
+   CTA band — deep, high-contrast panel for read / subscribe
+   ========================================================================== */
+
+.cta-band {
+  background: linear-gradient(180deg, var(--color-forest-deep) 0%, var(--color-forest) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: var(--space-5);
+  border: 1px solid var(--color-brass);
+  opacity: 0.5;
+  pointer-events: none;
+}
+[data-theme="dark"] .cta-band { background: linear-gradient(180deg, var(--color-forest-deep) 0%, #0f1c12 100%); }
+
+.cta-band-inner { text-align: center; position: relative; z-index: 1; }
+
+.cta-band .eyebrow::before { color: var(--color-brass-bright); }
+
+.cta-band-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-2xl);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fbf5e3;
+  margin-bottom: var(--space-6);
+}
+
+.cta-band-copy {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: #d9e2d5;
+  max-width: 60ch;
+  margin: 0 auto var(--space-8);
+  line-height: 1.7;
+}
+
+.cta-band .btn { border-color: var(--color-brass); color: #fbf5e3; }
+.cta-band .btn:hover { background: var(--color-brass); color: #1a1614; }
+.cta-band .btn-ghost { border-color: #d9e2d5; color: #d9e2d5; }
+.cta-band .btn-ghost:hover { border-color: var(--color-brass-bright); color: var(--color-brass-bright); }
+
+/* Newsletter form */
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  max-width: 460px;
+  margin: 0 auto;
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(251, 245, 227, 0.2);
+}
+.newsletter-form input[type="email"] {
+  flex: 1 1 240px;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: #fbf5e3;
+  background: rgba(251, 245, 227, 0.06);
+  border: 1px solid rgba(251, 245, 227, 0.35);
+  border-radius: 0;
+}
+.newsletter-form input[type="email"]::placeholder { color: rgba(251, 245, 227, 0.55); }
+.newsletter-form input[type="email"]:focus-visible { outline: 2px solid var(--color-brass-bright); outline-offset: 2px; }
+.newsletter-form .btn { border-color: var(--color-brass); color: #fbf5e3; flex-shrink: 0; }
+.newsletter-form .btn:hover { background: var(--color-brass); color: #1a1614; }
+
+.newsletter-note {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: rgba(217, 226, 213, 0.75);
+  margin-top: var(--space-4);
+  font-style: normal;
+}
+.newsletter-note.is-success { color: var(--color-brass-bright); letter-spacing: 0.14em; }
+
+/* ==========================================================================
+   Download resource grid — press kit assets
+   ========================================================================== */
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.download-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-left: 3px solid var(--color-oxblood);
+  transition: transform var(--transition-interactive), border-color var(--transition-interactive);
+}
+.download-card:hover {
+  transform: translateY(-3px);
+  border-left-color: var(--color-forest);
+  color: inherit;
+}
+.download-card-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-oxblood);
+  border: 1px solid var(--color-gold);
+}
+[data-theme="dark"] .download-card-icon { color: var(--color-oxblood-bright); }
+.download-card-body { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.download-card-title {
+  font-family: var(--font-deco);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+.download-card-meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.download-card-arrow {
+  font-size: var(--text-lg);
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .newsletter-form { flex-direction: column; }
+  /* flex-basis applies to the main axis; once flex-direction flips to
+     column the 240px basis on the email input becomes a HEIGHT, not a
+     width, producing a tall broken-looking box. Reset it explicitly. */
+  .newsletter-form input[type="email"] { flex: 0 0 auto; width: 100%; }
+  .newsletter-form .btn { width: 100%; justify-content: center; }
+}
+
+/* Fix: the hero genre chip's default styling assumes short text
+   ("Fiction · Poetry · Nonfiction") with no wrapping. This page's longer
+   phrase ("A Critical Essay on 'Assumptions'") needs to wrap on small
+   screens instead of overflowing the gold-bordered box. */
+@media (max-width: 640px) {
+  .hero-genre-text {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.14em;
+  }
+}
+@media (max-width: 480px) {
+  .hero-genre-chip { padding-inline: var(--space-4); }
+  .hero-genre-text { font-size: var(--text-xs); letter-spacing: 0.08em; }
+  .hero-eyebrow { letter-spacing: 0.28em; }
+}
+
+/* Fix: long deco-plaque labels ("For Journalists, Reviewers & Booksellers",
+   "The Work Behind the Essay") use white-space: nowrap in the base
+   stylesheet, which is fine for short plaques but overflows the viewport
+   on narrow phones for longer ones used on this page. Allow wrapping and
+   tighten spacing below 560px. */
+@media (max-width: 560px) {
+  .deco-plaque {
+    max-width: 100%;
+    padding-inline: var(--space-6);
+  }
+  .deco-plaque-text {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.14em;
+    font-size: var(--text-sm);
+  }
+  .deco-plaque-sm .deco-plaque-text { font-size: var(--text-xs); }
+}
+
+/* Fix: the At-a-Glance definition list uses a fixed two-column grid
+   (label / value) with inline styles. Long values (URLs, italic titles)
+   have no natural break point and overflow the viewport on phones.
+   Stack label above value on narrow screens and allow long tokens to
+   break instead of overflowing. */
+.glance-dl dd { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .glance-dl {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-1) var(--space-2) !important;
+  }
+  .glance-dl dt { padding-top: var(--space-3) !important; }
+  .glance-dl dd { padding-bottom: var(--space-1); }
+}
