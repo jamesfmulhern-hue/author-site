@@ -367,7 +367,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .nav-links {
   display: flex;
-  gap: clamp(0.85rem, 1.4vw, var(--space-6));
+  gap: clamp(0.6rem, 1vw, var(--space-5));
   list-style: none;
   align-items: center;
   flex-wrap: nowrap;
@@ -376,8 +376,8 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .nav-links a {
   font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  letter-spacing: 0.22em;
+  font-size: clamp(0.72rem, 0.6rem + 0.35vw, 0.85rem);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
   position: relative;
