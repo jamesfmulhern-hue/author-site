@@ -371,12 +371,10 @@
           <a class="btn btn-ghost" href="books.html">Explore the Books</a>
         </div>
 
-        <form class="newsletter-form" id="newsletter-form" aria-label="Join the reading list">
-          <label for="newsletter-email" class="sr-only">Email address</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required autocomplete="email">
-          <button type="submit" class="btn">Join the Reading List</button>
-        </form>
-        <p class="newsletter-note" id="newsletter-note">No spam &mdash; occasional notice of new essays, stories, and books from Silver Current Press.</p>
+        <div class="substack-embed-card">
+          <iframe src="https://mulhernj.substack.com/embed" width="100%" height="150" style="border:0; background:transparent; max-width:480px;" frameborder="0" scrolling="no" loading="lazy" title="Subscribe to James Mulhern on Substack"></iframe>
+        </div>
+        <p class="newsletter-note">No spam &mdash; occasional notice of new essays, stories, and books from Silver Current Press.</p>
       </div>
     </div>
   </section>
@@ -550,6 +548,5 @@
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
-<script src="js/newsletter.js"></script>
 </body>
 </html>

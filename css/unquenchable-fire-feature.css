@@ -60,31 +60,16 @@
 .cta-band .btn-ghost { border-color: #d9e2d5; color: #d9e2d5; }
 .cta-band .btn-ghost:hover { border-color: var(--color-brass-bright); color: var(--color-brass-bright); }
 
-/* Newsletter form */
-.newsletter-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
-  max-width: 460px;
-  margin: 0 auto;
-  padding-top: var(--space-6);
-  border-top: 1px solid rgba(251, 245, 227, 0.2);
+/* Substack subscribe embed */
+.substack-embed-card {
+  max-width: 480px;
+  margin: var(--space-6) auto 0;
+  padding: var(--space-4);
+  background: #fbf5e3;
+  border: 1px solid var(--color-brass);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
-.newsletter-form input[type="email"] {
-  flex: 1 1 240px;
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: #fbf5e3;
-  background: rgba(251, 245, 227, 0.06);
-  border: 1px solid rgba(251, 245, 227, 0.35);
-  border-radius: 0;
-}
-.newsletter-form input[type="email"]::placeholder { color: rgba(251, 245, 227, 0.55); }
-.newsletter-form input[type="email"]:focus-visible { outline: 2px solid var(--color-brass-bright); outline-offset: 2px; }
-.newsletter-form .btn { border-color: var(--color-brass); color: #fbf5e3; flex-shrink: 0; }
-.newsletter-form .btn:hover { background: var(--color-brass); color: #1a1614; }
+.substack-embed-card iframe { display: block; margin: 0 auto; }
 
 .newsletter-note {
   font-family: var(--font-ui);
@@ -149,13 +134,8 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 480px) {
-  .newsletter-form { flex-direction: column; }
-  /* flex-basis applies to the main axis; once flex-direction flips to
-     column the 240px basis on the email input becomes a HEIGHT, not a
-     width, producing a tall broken-looking box. Reset it explicitly. */
-  .newsletter-form input[type="email"] { flex: 0 0 auto; width: 100%; }
-  .newsletter-form .btn { width: 100%; justify-content: center; }
+@media (max-width: 420px) {
+  .substack-embed-card { padding: var(--space-3); }
 }
 
 /* Fix: the hero genre chip's default styling assumes short text
