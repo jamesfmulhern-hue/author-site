@@ -2959,6 +2959,13 @@ em em, em cite, i em, i cite, cite em {
   .service-rates.service-rates-4 .rate-amount {
     font-size: clamp(1.5rem, 1rem + 1vw, 2.1rem);
   }
+  /* Four-up columns are also narrower for the label text, so tighten the
+     tracking a touch and let long labels wrap onto two lines instead of
+     overflowing past the card border. */
+  .service-rates.service-rates-4 .service-rate dt {
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+  }
 }
 
 /* Timeline note */
@@ -2989,6 +2996,7 @@ em em, em cite, i em, i cite, cite em {
 .service-rate {
   position: relative;
   padding-inline: var(--space-3);
+  min-width: 0;
 }
 
 .service-rate + .service-rate::before {
@@ -3009,6 +3017,9 @@ em em, em cite, i em, i cite, cite em {
   color: var(--color-forest);
   margin-bottom: var(--space-4);
   font-weight: 600;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 [data-theme="dark"] .service-rate dt { color: var(--color-forest-bright); }
 
