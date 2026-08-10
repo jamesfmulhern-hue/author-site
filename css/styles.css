@@ -3787,3 +3787,34 @@ hr,
     margin-top: var(--space-8);
   }
 }
+
+/* ============================================================
+   RATE GRID + NAVIGATION FIT CORRECTIONS
+   ------------------------------------------------------------
+   1. Four-up rate grids. Above 1200px the price size grew faster
+      than its column, so four-figure values ($6,800, $4,200,
+      $2,400) ran past the column and crossed the divider rules.
+      Tighten the column gap to widen each column, and cap the
+      price size so the longest value always sits on one line.
+
+   2. Desktop navigation. With twelve links the bar no longer fits
+      between 1361px and 1520px, which put a horizontal scrollbar
+      on every page. Tighten the tracking and the gap across that
+      band only, so the full menu still shows on a 1440px laptop.
+   ============================================================ */
+@media (min-width: 1200px) {
+  .service-rates.service-rates-4 {
+    column-gap: clamp(var(--space-3), 1.3vw, var(--space-5));
+  }
+  .service-rates.service-rates-4 .rate-amount {
+    font-size: clamp(1.5rem, 0.75rem + 1.05vw, 2.1rem);
+  }
+}
+
+@media (min-width: 1361px) and (max-width: 1520px) {
+  .nav-links { gap: clamp(0.4rem, 0.65vw, 0.85rem); }
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.085em;
+  }
+}
