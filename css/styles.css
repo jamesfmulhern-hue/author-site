@@ -2963,8 +2963,9 @@ em em, em cite, i em, i cite, cite em {
      tracking a touch and let long labels wrap onto two lines instead of
      overflowing past the card border. */
   .service-rates.service-rates-4 .service-rate dt {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     line-height: 1.4;
+    font-size: 0.72rem;
   }
 }
 
