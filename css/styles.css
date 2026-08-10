@@ -2951,9 +2951,9 @@ em em, em cite, i em, i cite, cite em {
 }
 
 .service-rates.service-rates-3 { grid-template-columns: repeat(3, 1fr); }
-.service-rates.service-rates-4 { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-8); }
+.service-rates.service-rates-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-8); }
 @media (min-width: 880px) {
-  .service-rates.service-rates-4 { grid-template-columns: repeat(4, 1fr); }
+  .service-rates.service-rates-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   /* Four-up columns are narrower, so give the (longer, 4-digit) prices in
      this layout a slightly smaller size to guarantee a single-line fit. */
   .service-rates.service-rates-4 .rate-amount {
@@ -2963,7 +2963,7 @@ em em, em cite, i em, i cite, cite em {
      tracking a touch and let long labels wrap onto two lines instead of
      overflowing past the card border. */
   .service-rates.service-rates-4 .service-rate dt {
-    letter-spacing: 0.18em;
+    letter-spacing: 0.1em;
     line-height: 1.4;
   }
 }
@@ -3018,8 +3018,7 @@ em em, em cite, i em, i cite, cite em {
   margin-bottom: var(--space-4);
   font-weight: 600;
   overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
+  hyphens: none;
 }
 [data-theme="dark"] .service-rate dt { color: var(--color-forest-bright); }
 
