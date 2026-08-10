@@ -412,6 +412,16 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .menu-toggle { display: none; }
 
+/* Intermediate desktop range: 13 nav items overflow between the hamburger
+   breakpoint (1360px) and roughly 1600px. Tighten tracking and gap so the
+   horizontal nav still fits on common 1366/1440/1512px laptop widths
+   instead of collapsing to a hamburger or running off the right edge. */
+@media (min-width: 1361px) and (max-width: 1600px) {
+  .nav-links { gap: 9px; }
+  .nav-links a { letter-spacing: 0.9px; font-size: 13px; }
+  .nav-closed-tag { letter-spacing: 0.5px; }
+}
+
 @media (max-width: 1360px) {
   .nav-links { display: none; }
   .nav-links.open {
