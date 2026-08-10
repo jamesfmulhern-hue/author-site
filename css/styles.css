@@ -3798,9 +3798,10 @@ hr,
       price size so the longest value always sits on one line.
 
    2. Desktop navigation. With twelve links the bar no longer fits
-      between 1361px and 1520px, which put a horizontal scrollbar
+      between 1361px and 1760px, which put a horizontal scrollbar
       on every page. Tighten the tracking and the gap across that
       band only, so the full menu still shows on a 1440px laptop.
+      Above 1760px the row has room for the menu at full size.
    ============================================================ */
 @media (min-width: 1200px) {
   .service-rates.service-rates-4 {
@@ -3811,10 +3812,35 @@ hr,
   }
 }
 
-@media (min-width: 1361px) and (max-width: 1520px) {
+@media (min-width: 1361px) and (max-width: 1760px) {
   .nav-links { gap: clamp(0.4rem, 0.65vw, 0.85rem); }
   .nav-links a {
     font-size: 0.75rem;
     letter-spacing: 0.085em;
+  }
+}
+
+/* ============================================================
+   BRAND WORDMARK - KEEP ON ONE LINE ON DESKTOP
+   ------------------------------------------------------------
+   The wordmark is a flex item next to the nav list, so once the
+   menu grew to twelve links the browser resolved the shortfall by
+   letting "JAMES MULHERN" wrap onto a second line, which left the
+   header looking broken at every width above 1360px.
+
+   Hold the wordmark on a single line and stop it being compressed,
+   then buy back the width it needs by easing the Deco tracking a
+   little and trimming the gap between mark and words. Below
+   1360px the menu collapses to the toggle and the wordmark has
+   room to spare, so this is scoped to desktop only.
+   ============================================================ */
+@media (min-width: 1361px) {
+  .brand {
+    flex-shrink: 0;
+    gap: var(--space-2);
+  }
+  .brand span {
+    white-space: nowrap;
+    letter-spacing: 0.17em;
   }
 }
