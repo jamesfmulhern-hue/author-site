@@ -3844,3 +3844,76 @@ hr,
     letter-spacing: 0.17em;
   }
 }
+
+/* ============================================================
+   ESSAY / GUIDE PAID-DOWNLOAD BOX (Payhip)
+   ------------------------------------------------------------
+   A quiet purchase box for a typeset PDF edition of an essay
+   or guide, placed after the free on-page reading content.
+   Reading the piece itself always stays free; this box sells
+   the keepable, offline copy.
+   ============================================================ */
+.essay-download-box {
+  max-width: 46ch;
+  margin: var(--space-10) auto var(--space-10);
+  padding: var(--space-6) var(--space-7);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-top: 2px solid var(--color-brass);
+}
+.essay-download-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brass-deep);
+  margin: 0 0 var(--space-2);
+}
+.essay-download-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-oxblood);
+  margin: 0 0 var(--space-3);
+}
+.essay-download-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-5);
+}
+.essay-download-btn {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f8f1dd !important;
+  background: var(--color-oxblood);
+  padding: 13px 28px;
+  border-radius: 2px;
+  text-decoration: none !important;
+  transition: background 0.25s ease;
+}
+.essay-download-btn:hover {
+  background: var(--color-oxblood-bright);
+}
+
+/* Guides page: paid upgrade line under a free-download card */
+.guide-card-upgrade {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--color-divider);
+}
+.guide-card-upgrade a.payhip-buy-button {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-oxblood) !important;
+  text-decoration: none !important;
+}
+.guide-card-upgrade a.payhip-buy-button:hover {
+  color: var(--color-brass-deep) !important;
+}
