@@ -2303,32 +2303,44 @@ em em, em cite, i em, i cite, cite em {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(var(--text-sm), 0.75rem + 0.5vw, var(--text-lg));
-  letter-spacing: 0.42em;
+  letter-spacing: clamp(0.16em, 0.1em + 0.8vw, 0.42em);
   text-transform: uppercase;
   color: var(--color-oxblood);
   line-height: 1.2;
-  white-space: nowrap;
+  /* Allow wrapping always: the chip sits inside a grid column whose width
+     varies with the hero layout, not just with the viewport, so nowrap text
+     can overflow the gold border even on wide desktop screens. Wrapping
+     keeps the words inside the box at every width. */
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
+  max-width: 100%;
 }
 
 [data-theme="dark"] .hero-genre-text { color: var(--color-oxblood-bright); }
 
-/* On narrow screens, shrink the chip text and hide the flourishes so it stays
-   readable without breaking layout. White-space MUST allow wrapping so the
-   words never crash the gold border. */
-@media (max-width: 640px) {
+/* The chip itself must never let its contents exceed its own box, no matter
+   the viewport or column width. Flex-wrap lets the text wrap onto a second
+   line instead of bleeding past the gold border. */
+.hero-genre-chip {
+  max-width: 100%;
+  flex-wrap: wrap;
+  row-gap: var(--space-2);
+}
+
+/* On narrow/medium screens, shrink the chip text further and hide the
+   flourishes so it stays readable without breaking layout. */
+@media (max-width: 900px) {
   .hero-genre-flourish { display: none; }
   .hero-genre-text {
     font-size: 0.78rem !important;
     letter-spacing: 0.16em !important;
-    white-space: normal !important;
-    text-align: center;
     line-height: 1.35;
   }
   .hero-genre-chip {
     padding-inline: var(--space-8) !important;
     padding-block: var(--space-6) !important;
-    flex-wrap: wrap;
   }
 }
 
