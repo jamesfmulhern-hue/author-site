@@ -2942,6 +2942,11 @@ em em, em cite, i em, i cite, cite em {
 .service-rates.service-rates-4 { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-8); }
 @media (min-width: 880px) {
   .service-rates.service-rates-4 { grid-template-columns: repeat(4, 1fr); }
+  /* Four-up columns are narrower, so give the (longer, 4-digit) prices in
+     this layout a slightly smaller size to guarantee a single-line fit. */
+  .service-rates.service-rates-4 .rate-amount {
+    font-size: clamp(1.5rem, 1rem + 1vw, 2.1rem);
+  }
 }
 
 /* Timeline note */
@@ -3214,13 +3219,15 @@ hr,
 /* ==========================================================================
    Mobile rate-card overflow fix
    Long prices like "$650 – $1,800" or "$2,500 – $6,500" must stay in column.
+   Keep each price on a single line — never break mid-number — and instead
+   let the font size shrink to fit the available column width.
    ========================================================================== */
 .rate-amount {
   display: inline-block;
   max-width: 100%;
-  white-space: normal;        /* allow wrapping if needed */
-  overflow-wrap: anywhere;    /* break long currency strings cleanly */
-  word-break: break-word;
+  white-space: nowrap;        /* never split a price across lines */
+  overflow-wrap: normal;
+  word-break: keep-all;
   hyphens: none;
   line-height: 1.1;
 }
