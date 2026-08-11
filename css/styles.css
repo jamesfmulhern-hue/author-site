@@ -3952,3 +3952,12 @@ hr,
 .guide-card-upgrade a.payhip-buy-button:hover {
   color: var(--color-brass-deep) !important;
 }
+
+/* Essay standfirst — the deck beneath an essay title, set in the body column */
+.essay-standfirst {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--color-text-muted, var(--color-text));
+  max-width: 60ch;
+  margin-block: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+}
