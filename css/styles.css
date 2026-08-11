@@ -2175,26 +2175,56 @@ p { text-wrap: pretty; max-width: 68ch; }
    ========================================================================== */
 
 .hero-tagline em, .hero-tagline i, .hero-tagline cite,
-.pull-quote em, .pull-quote i,
+.pull-quote em, .pull-quote i, .pull-quote cite,
 .featured-book-info .pull-quote em, .featured-book-info .pull-quote i,
 .intro-panel-quote em, .intro-panel-quote i, .intro-panel-quote cite,
-.praise-quote em, .praise-quote i,
+.praise-quote em, .praise-quote i, .praise-quote cite,
 .musing-body em.title-flip,
+.footer-tagline em, .footer-tagline i, .footer-tagline cite,
+.section-title p em, .section-title p i, .section-title p cite,
+.book-cover-author em, .book-cover-author i, .book-cover-author cite,
+.publisher-line em, .publisher-line i, .publisher-line cite,
+.page-header p em, .page-header p i, .page-header p cite,
+.page-header-sub em, .page-header-sub i, .page-header-sub cite,
+.influence dd em, .influence dd i, .influence dd cite,
+.anthology-list li cite em, .anthology-list li cite i,
+.excerpt-meta em, .excerpt-meta i, .excerpt-meta cite,
+.editors-note p em, .editors-note p i, .editors-note p cite,
+.musings-intro p em, .musings-intro p i, .musings-intro p cite,
+.musing-body .musing-pull em, .musing-body .musing-pull i, .musing-body .musing-pull cite,
+.closed-notice-body em, .closed-notice-body i, .closed-notice-body cite,
+.contest-tagline em, .contest-tagline i, .contest-tagline cite,
+.service-tagline em, .service-tagline i, .service-tagline cite,
+.service-note em, .service-note i, .service-note cite,
+.service-timeline em, .service-timeline i, .service-timeline cite,
+.rate-unit em, .rate-unit i, .rate-unit cite,
+.press-service-desc em, .press-service-desc i, .press-service-desc cite,
+.cta-band-copy em, .cta-band-copy i, .cta-band-copy cite,
+.sch-quote em, .sch-quote i, .sch-quote cite,
+.sch-sig em, .sch-sig i, .sch-sig cite,
+.passage-quote em, .passage-quote i, .passage-quote cite,
+.excerpt-eyebrow em, .excerpt-eyebrow i, .excerpt-eyebrow cite,
+.crossings-poem-number em, .crossings-poem-number i,
+.crossings-poem-note em, .crossings-poem-note i,
+.story-group-title p em, .story-group-title p i,
+.guide-group-title p em, .guide-group-title p i,
+.sites-group-title p em, .sites-group-title p i,
+.guide-card-quote em, .guide-card-quote i, .guide-card-quote cite,
+.story-card-lesson em, .story-card-lesson i,
 [style*="font-style:italic"] em, [style*="font-style: italic"] em,
 [style*="font-style:italic"] cite, [style*="font-style: italic"] cite,
+[style*="font-style:italic"] i, [style*="font-style: italic"] i,
 .italic em, .italic i, .italic cite,
-em em, em cite, i em, i cite, cite em {
+em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   font-style: normal;
   font-weight: 600;
 }
 
-/* Override: <em> inside an upright <cite> (which has font-style: normal) stays italic,
-   because the cite is NOT italic context. */
-.pull-quote cite em,
-.pull-quote cite i {
-  font-style: italic;
-  font-weight: inherit;
-}
+/* Book/publication titles inside a pull-quote's citation line stay roman:
+   the whole pull-quote block (quote body + citation) is an italic context,
+   so titles set in <em>/<i> within it must render upright to stay
+   distinguishable, per standard typographic convention. (Previously this
+   rule re-italicized them, which was the bug.) */
 
 /* ==========================================================================
    Deco Plaque — Art Deco gold-bordered title chip
