@@ -2387,7 +2387,8 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
      can overflow the gold border even on wide desktop screens. Wrapping
      keeps the words inside the box at every width. */
   white-space: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: keep-all;
   text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
   max-width: 100%;
@@ -3101,8 +3102,9 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   color: var(--color-forest);
   margin-bottom: var(--space-4);
   font-weight: 600;
-  overflow-wrap: break-word;
-  hyphens: none;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  hyphens: none !important;
 }
 [data-theme="dark"] .service-rate dt { color: var(--color-forest-bright); }
 
@@ -3584,10 +3586,21 @@ hr,
     word-wrap: break-word;
   }
 
-  /* Prevent ALL long inline content (URLs, prices, prose) from busting columns */
+  /* Prevent ALL long inline content (URLs, prices, prose) from busting columns.
+     Excludes .service-rate dt / .rate-amount / .rate-unit / .hero-genre-text —
+     those short, letter-spaced UI labels must always wrap at whole-word
+     boundaries, never split mid-word, so they keep their own rules below. */
   body, p, li, dd, dt, span, a, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: anywhere;
     word-break: normal;
+  }
+
+  .service-rate dt,
+  .rate-amount,
+  .rate-unit,
+  .hero-genre-text {
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
   }
 
   /* Service cards on phones — tighter padding so content has room */
@@ -4045,4 +4058,86 @@ hr,
     white-space: normal;
     text-align: center;
   }
+}
+
+/* ============================================================
+   GLOBAL SAFEGUARD - NEVER SPLIT LETTER-SPACED LABELS MID-WORD
+   ------------------------------------------------------------
+   Every eyebrow, badge, nav link, button, and service-card title
+   on this site is set in uppercase with wide letter-spacing
+   (0.2em-0.45em). When one of these short labels sits in a
+   narrow column (mobile stacks, 3-up pricing grids, tablet
+   widths), the extra letter-spacing can make a single word a
+   few pixels wider than its box. Several component and
+   mobile-only rules elsewhere in this file set
+   overflow-wrap: anywhere / break-word as a general overflow
+   fix for long prose and URLs - but applied to these short
+   uppercase labels, that same rule lets the browser slice a
+   word apart at an arbitrary character (e.g. "CHAPBOOK" ->
+   "CHAPBOO" / "K", "SUBMISSION" -> "SUBMISSI" / "ON") instead
+   of simply wrapping the whole word to the next line.
+
+   This rule wins by being last in the file (equal specificity,
+   later source order beats earlier) and forces every uppercase,
+   letter-spaced label back to whole-word wrapping only, with no
+   hyphenation, at every viewport width. Font size may still
+   shrink via existing clamp()/media rules - only the line-break
+   behavior is locked here.
+   ============================================================ */
+h5, h6,
+.brand,
+.nav-links a,
+.btn,
+.eyebrow,
+.hero-eyebrow,
+.hero h1, .hero .hero-name,
+.hero-role,
+.accolade-label,
+.section-title h2,
+.book-cover-title,
+.featured-book-info h3,
+.pull-quote cite,
+.book-meta-item,
+.intro-panel-quote-attr,
+.intro-panel-eyebrow,
+.intro-text h2,
+.book-card-genre,
+.book-card-title,
+.book-card-awards,
+.footer-name,
+.footer-meta,
+.page-header-eyebrow,
+.page-header h1,
+.forthcoming-badge,
+.praise-book,
+.buy-link,
+.excerpt-eyebrow,
+.excerpt-title,
+.excerpt-end,
+.poem-title,
+.poem-attr,
+.editors-note .label,
+.read-more-card .venue,
+.read-more-card a,
+.musing-kind,
+.musing-title,
+.musing-body cite,
+.deco-plaque-text,
+.hero-genre-text,
+.closed-notice-eyebrow,
+.contest-eyebrow,
+.contest-detail dt,
+.contest-detail dd small,
+.closed-notice-stamp,
+.btn-disabled, .btn:disabled,
+.nav-closed-tag,
+.service-eyebrow,
+.service-h3,
+.service-timeline strong,
+.service-rate dt,
+.essay-download-eyebrow,
+.essay-download-btn,
+.guide-card-upgrade a.payhip-buy-button {
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
 }
