@@ -188,3 +188,18 @@
   .glance-dl dt { padding-top: var(--space-3) !important; }
   .glance-dl dd { padding-bottom: var(--space-1); }
 }
+
+/* Fix: the plaque fix above starts at 560px, but this page's longest
+   label ("For Journalists, Reviewers & Booksellers") is about 700px wide
+   on one line and the plaque adds ~96px of side padding, so it still ran
+   past the viewport on tablets — 58px over at 768px. Let the label wrap
+   and cap the plaque at the container width up to 900px, where the
+   single-line version finally fits. Padding is left alone so the plaque
+   keeps its proportions; only the text reflows. */
+@media (max-width: 900px) {
+  .deco-plaque { max-width: 100%; }
+  .deco-plaque-text {
+    white-space: normal;
+    text-align: center;
+  }
+}

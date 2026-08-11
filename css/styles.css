@@ -3991,3 +3991,58 @@ hr,
   max-width: 60ch;
   margin-block: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
 }
+
+/* ============================================================
+   BUTTON CORNER BRACKETS ON NARROW SCREENS
+   ------------------------------------------------------------
+   .btn::before / ::after draw the Deco corner brackets at -4px
+   outside the button edge. That is invisible on desktop, but when
+   a long label ("Download the Complete Study (PDF)") makes the
+   button run the full width of a phone container, the right-hand
+   bracket lands past the viewport and puts a 3px horizontal
+   scrollbar on the page.
+
+   Give the brackets room to sit outside the button while staying
+   inside the container, let long labels wrap onto a second line,
+   and trim the generous side padding so the text has more room
+   before it needs to wrap at all.
+   ============================================================ */
+@media (max-width: 560px) {
+  .btn {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    max-width: calc(100% - 16px);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+  /* Pull the brackets in from 4px to 2px so they clear the margin
+     even after sub-pixel rounding; at phone sizes the tighter inset
+     reads the same. */
+  .btn::before { top: -2px; left: -2px; }
+  .btn::after  { bottom: -2px; right: -2px; }
+}
+
+/* ============================================================
+   DECO PLAQUE - LONG LABELS ON TABLETS
+   ------------------------------------------------------------
+   .deco-plaque-text is set to nowrap, which suits short plaques
+   but not the long ones on the press kit and directory pages
+   ("For Journalists, Reviewers & Booksellers", "For Writers
+   Considering Submission"). On one line those run about 640px
+   wide, and with the plaque's side padding they pushed the page
+   127px past the viewport at 560px and 49px at 640px.
+
+   Allow the label to wrap and cap the plaque at its container up
+   to 900px, above which the single-line version fits on its own.
+   ============================================================ */
+@media (max-width: 900px) {
+  .deco-plaque { max-width: 100%; }
+  .deco-plaque-text {
+    white-space: normal;
+    text-align: center;
+  }
+}
