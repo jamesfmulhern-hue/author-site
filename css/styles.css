@@ -967,6 +967,34 @@ p { text-wrap: pretty; max-width: 68ch; }
   margin: var(--space-6) 0;
   line-height: 1.6;
 }
+
+/* Publisher's front-of-book line: an unattributed editorial line (not a
+   quotation), set epigraph-style beneath a page title. Centered, italic,
+   no border rule -- visually distinct from .pull-quote, which is reserved
+   for sourced/cited text. */
+.publisher-line {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-oxblood);
+  text-align: center;
+  max-width: 46ch;
+  margin: var(--space-6) auto var(--space-8);
+  line-height: 1.5;
+  position: relative;
+}
+[data-theme="dark"] .publisher-line { color: var(--color-oxblood-bright); }
+
+.publisher-line::before,
+.publisher-line::after {
+  content: "";
+  display: block;
+  width: 2.5em;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.6;
+  margin: var(--space-3) auto;
+}
 [data-theme="dark"] .pull-quote { color: var(--color-forest); border-left-color: var(--color-oxblood-bright); }
 
 .pull-quote cite {
