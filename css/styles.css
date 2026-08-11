@@ -700,6 +700,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   position: relative;
   padding-inline: var(--space-4);
   text-align: center;
+  overflow: hidden;
 }
 
 .accolade + .accolade::before {
@@ -712,12 +713,14 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .accolade-number {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: clamp(1.15rem, 1.4vw + 0.85rem, var(--text-2xl));
   font-weight: 500;
   color: var(--color-oxblood);     /* MAROON */
   letter-spacing: 0.05em;
   display: block;
   margin-bottom: var(--space-2);
+  max-width: 100%;
+  white-space: nowrap;
 }
 [data-theme="dark"] .accolade-number { color: var(--color-oxblood-bright); }
 
