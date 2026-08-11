@@ -1,0 +1,76 @@
+name: Site audit
+
+# Runs the responsive / heading / link audit before anything reaches
+# Cloudflare Pages. Guards against the regressions we have actually hit:
+# plaque labels bursting their box, button brackets pushing the page
+# sideways, four-figure prices wrapping, and the wordmark breaking in two.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'Run every viewport width (slower, more thorough)'
+        type: boolean
+        default: false
+      external:
+        description: 'Also check outbound links'
+        type: boolean
+        default: false
+
+jobs:
+  audit:
+    name: Responsive, headings and links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('tests/package.json') }}
+
+      - name: Install dependencies
+        working-directory: tests
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Run audit
+        id: audit
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.full }}" = "true" ]; then ARGS="$ARGS --full"; fi
+          if [ "${{ github.event.inputs.external }}" = "true" ]; then ARGS="$ARGS --external"; fi
+          node tests/site-audit.mjs $ARGS --json audit-report.json | tee audit-output.txt
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-audit-report
+          path: |
+            audit-report.json
+            audit-output.txt
+          retention-days: 30
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo "## Site audit"
+            echo ""
+            echo '```'
+            tail -40 audit-output.txt 2>/dev/null || echo "no output captured"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

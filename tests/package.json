@@ -1,0 +1,17 @@
+{
+  "name": "author-site-tests",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Responsive, heading and link regression audit for authorjamesmulhern.com",
+  "scripts": {
+    "audit": "node site-audit.mjs",
+    "audit:full": "node site-audit.mjs --full",
+    "audit:key": "node site-audit.mjs --pages press-kit.html,services.html --full",
+    "audit:links": "node site-audit.mjs --external",
+    "setup": "npm install && npx playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}
