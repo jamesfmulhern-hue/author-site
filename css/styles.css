@@ -657,7 +657,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 }
 
 @media (max-width: 880px) {
-  .hero-inner { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
   .hero-image { max-width: 360px; margin-inline: auto; }
 }
 
@@ -693,7 +693,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   .accolades-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
-  .accolades-grid { grid-template-columns: 1fr; }
+  .accolades-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 .accolade {
@@ -1051,7 +1051,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 }
 
 @media (max-width: 880px) {
-  .featured-book { grid-template-columns: 1fr; }
+  .featured-book { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ==========================================================================
@@ -1067,7 +1067,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 /* Single-column intro (awards panel removed) */
 .intro.intro--full {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 .intro.intro--full .intro-text {
   max-width: 70ch;
@@ -1224,7 +1224,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 .intro-text p { margin-bottom: var(--space-4); }
 
 @media (max-width: 880px) {
-  .intro { grid-template-columns: 1fr; }
+  .intro { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ==========================================================================
@@ -2622,7 +2622,7 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   .contest-detail:nth-child(odd) + .contest-detail::before { display: none; }
 }
 @media (max-width: 520px) {
-  .contest-details { grid-template-columns: 1fr; gap: var(--space-7); }
+  .contest-details { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
   .contest-detail + .contest-detail::before { display: none; }
   .contest-detail + .contest-detail {
     border-top: 1px solid color-mix(in oklab, var(--color-gold) 50%, transparent);
@@ -3152,7 +3152,7 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
 [data-theme="dark"] .service-card-press .service-list strong { color: var(--color-oxblood-bright); }
 
 @media (max-width: 640px) {
-  .service-rates { grid-template-columns: 1fr; gap: var(--space-6); }
+  .service-rates { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .service-rate + .service-rate::before {
     left: 18%;
     right: 18%;
@@ -3552,7 +3552,7 @@ hr,
 }
 
 @media (max-width: 880px) {
-  .pillars { grid-template-columns: 1fr; gap: var(--space-6); }
+  .pillars { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .pillar { padding: var(--space-8) var(--space-6); }
 }
 
@@ -4140,4 +4140,86 @@ h5, h6,
 .guide-card-upgrade a.payhip-buy-button {
   overflow-wrap: normal !important;
   word-break: keep-all !important;
+}
+
+/* ============================================================
+   NARROW-SCREEN OVERFLOW FIXES
+   ------------------------------------------------------------
+   Found by the full-width audit sweep, which exercises 320px and
+   360px - widths the nine-width standard run never reached.
+
+   1. Hero. The single-column fallback at 880px uses `1fr`, which is
+      shorthand for minmax(auto, 1fr). The `auto` floor means the
+      track can never shrink below the content's min-content width,
+      so on a 320px screen the grid resolved to a 346px column and
+      pushed the page 46px sideways. minmax(0, 1fr) lets it shrink;
+      min-width: 0 does the same for the grid children; and the
+      display headline is allowed to break so it has a smaller
+      min-content to begin with. The 360px image cap is also wider
+      than a 320px viewport, so it is capped against the container.
+
+   2. Closed-submissions stamp. Generous side padding plus 0.25em
+      tracking on a long label ran 4px past a 320px screen.
+   ============================================================ */
+@media (max-width: 880px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .hero-inner > * { min-width: 0; }
+  .hero-image { max-width: min(360px, 100%); margin-inline: auto; }
+}
+
+@media (max-width: 420px) {
+  .hero-text h1,
+  .hero-title,
+  .hero-text .display {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .closed-notice-stamp {
+    max-width: 100%;
+    padding-inline: var(--space-4);
+    letter-spacing: 0.14em;
+    white-space: normal;
+  }
+}
+
+/* Grid children default to min-width:auto, which stops them shrinking below
+   their content and is what actually forces the track wide. Zero it on the
+   two-column layouts that collapse to one column on small screens. */
+.featured-book > *,
+.intro > *,
+.hero-inner > * { min-width: 0; }
+
+
+
+/* ============================================================
+   DISPLAY TYPE ON VERY SMALL SCREENS
+   ------------------------------------------------------------
+   "UNQUENCHABLE" and "PHILADELPHIA" are single words wider than a
+   320px screen at hero size, and their min-content width dragged the
+   whole page sideways - 46px on the feature page, 20px on About.
+
+   The first instinct is to let them break, but that produces
+   "UNQUENCHABL / E FIRE" on a 390px phone, which is worse than the
+   bug. Scale the type down instead so the longest word simply fits.
+   The existing clamp floor of 2rem was the real problem: at 320px the
+   floor beat the 8vw preferred size and held the word at 32px.
+   ============================================================ */
+@media (max-width: 420px) {
+  .hero .hero-name,
+  .hero-name {
+    font-size: clamp(1.25rem, 6.4vw, 2.2rem) !important;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+  }
+  .section-title h2 {
+    font-size: clamp(1.15rem, 5.6vw, 2rem);
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  .featured-book-info h3 {
+    font-size: clamp(1rem, 4.8vw, 1.6rem);
+    overflow-wrap: normal;
+    hyphens: none;
+  }
 }
