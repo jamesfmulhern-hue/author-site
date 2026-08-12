@@ -72,12 +72,30 @@ real headings, the warnings will clear on their own.
 
 ## In CI
 
-`.github/workflows/site-audit.yml` runs on every push and pull request to
-`main`, before Cloudflare publishes. The report is attached to the run as an
-artifact and the tail of the output appears in the run summary.
+`.github/workflows/site-audit.yml` runs before Cloudflare publishes. Scope
+depends on what triggered it:
 
-You can also trigger it by hand from the Actions tab, with optional toggles for
-the full width sweep and outbound link checking.
+| Trigger | Scope |
+| --- | --- |
+| Push or PR to `main` | Full width sweep, 320px - 2560px |
+| Weekly, Mondays | Full sweep **plus** outbound link checking |
+| Manual, from the Actions tab | Whatever you tick |
+
+Every site update gets the full sweep automatically — there is nothing to
+remember. Outbound links are checked weekly instead of per-push because it
+means calling ~130 third-party servers, which is slow and flaky, and a dead
+outbound link is not caused by the commit you just made.
+
+The report is attached to each run as an artifact, and the tail of the output
+appears on the run summary page. GitHub emails you when a run fails.
+
+### One trap worth knowing
+
+Actions runs `run:` steps with `bash -e`, which does **not** set `pipefail`.
+The audit step pipes through `tee` to capture output, so without an explicit
+`set -o pipefail` the step would return `tee`'s exit code and a failing audit
+would be reported as a passing build. The workflow sets it. If you add another
+piped command, set it there too.
 
 ## Adding a check
 

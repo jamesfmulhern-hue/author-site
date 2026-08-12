@@ -1,31 +1,51 @@
 name: Site audit
 
 # Runs the responsive / heading / link audit before anything reaches
-# Cloudflare Pages. Guards against the regressions we have actually hit:
-# plaque labels bursting their box, button brackets pushing the page
+# Cloudflare Pages. Guards against the regressions this site has actually
+# hit: plaque labels bursting their box, button brackets pushing the page
 # sideways, four-figure prices wrapping, and the wordmark breaking in two.
+#
+# Scope by trigger:
+#   push / pull_request  full width sweep, 320px - 2560px
+#   schedule (weekly)    full width sweep + outbound link checking
+#   manual               whatever you tick in the Actions tab
+#
+# Outbound links are checked weekly rather than per-push: it means calling
+# ~130 third-party servers, which is slow and flaky, and a dead outbound
+# link is not caused by the commit you just made.
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    # Mondays 11:00 UTC - 07:00 New York in summer, 06:00 in winter.
+    - cron: '0 11 * * 1'
   workflow_dispatch:
     inputs:
       full:
-        description: 'Run every viewport width (slower, more thorough)'
+        description: 'Every viewport width (320px - 2560px)'
         type: boolean
-        default: false
+        default: true
       external:
         description: 'Also check outbound links'
         type: boolean
         default: false
 
+concurrency:
+  group: site-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   audit:
     name: Responsive, headings and links
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -46,13 +66,32 @@ jobs:
           npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
 
-      - name: Run audit
-        id: audit
+      - name: Decide scope
+        id: scope
         run: |
-          ARGS=""
-          if [ "${{ github.event.inputs.full }}" = "true" ]; then ARGS="$ARGS --full"; fi
-          if [ "${{ github.event.inputs.external }}" = "true" ]; then ARGS="$ARGS --external"; fi
-          node tests/site-audit.mjs $ARGS --json audit-report.json | tee audit-output.txt
+          case "${{ github.event_name }}" in
+            schedule)
+              ARGS="--full --external" ;;
+            workflow_dispatch)
+              ARGS=""
+              if [ "${{ inputs.full }}" = "true" ]; then ARGS="$ARGS --full"; fi
+              if [ "${{ inputs.external }}" = "true" ]; then ARGS="$ARGS --external"; fi
+              ;;
+            *)
+              # Every site update gets the full width sweep.
+              ARGS="--full" ;;
+          esac
+          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
+          echo "Running with: ${ARGS:-<standard>}"
+
+      - name: Run audit
+        run: |
+          # pipefail matters here. Actions runs steps with `bash -e`, which
+          # does NOT set it, so `node ... | tee` would return tee's status
+          # and a failing audit would be reported as a passing build.
+          set -o pipefail
+          node tests/site-audit.mjs ${{ steps.scope.outputs.args }} \
+            --json audit-report.json | tee audit-output.txt
 
       - name: Upload report
         if: always()
@@ -70,7 +109,9 @@ jobs:
           {
             echo "## Site audit"
             echo ""
+            echo "Trigger: \`${{ github.event_name }}\` · Scope: \`${{ steps.scope.outputs.args }}\`"
+            echo ""
             echo '```'
-            tail -40 audit-output.txt 2>/dev/null || echo "no output captured"
+            sed -e 's/\x1b\[[0-9;]*m//g' audit-output.txt 2>/dev/null | tail -40 || echo "no output captured"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
