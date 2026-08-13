@@ -95,6 +95,10 @@
     color: var(--color-text);
     margin: 0;
     line-height: 1.25;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    max-width: 100%;
   }
   .site-card-desc {
     font-family: var(--font-body);
@@ -125,6 +129,18 @@
     text-transform: uppercase;
     color: var(--color-forest);
     background: var(--color-forest-soft);
+    padding: 2px 8px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+  .site-card-status {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-brass-deep, var(--color-brass));
+    background: var(--color-brass-soft);
     padding: 2px 8px;
     border-radius: 2px;
     align-self: flex-start;
@@ -375,7 +391,8 @@
           <article class="site-card">
             <svg class="site-card-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M8 10 H24 V24 H8 Z"/><path d="M8 10 L16 17 L24 10"/><path d="M13 24 V19 H19 V24"/></svg>
             <span class="site-card-domain">payhip.com/MulhernTeachesEnglish</span>
-            <h3 class="site-card-title">Mulhern Teaches English (Shop) &mdash; Under Construction</h3>
+            <span class="site-card-status">Under construction</span>
+            <h3 class="site-card-title">Mulhern Teaches English (Shop)</h3>
             <p class="site-card-desc">The full catalog of craft handouts, literary-analysis workbooks, and downloadable essay editions in one storefront &mdash; instant delivery, no classroom required.</p>
             <a class="site-card-link" href="https://payhip.com/MulhernTeachesEnglish" target="_blank" rel="noopener">Browse the shop</a>
           </article>
