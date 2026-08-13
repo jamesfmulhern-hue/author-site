@@ -3890,7 +3890,14 @@ hr,
   }
 }
 
-@media (min-width: 1361px) and (max-width: 1760px) {
+/* The nav has grown to 14 items since this rule was first written for 12,
+   and the header row's max-width is fixed at var(--content-default)
+   (1240px) rather than growing with the viewport - so tightening the menu
+   only up to 1760px left every wider desktop failing again, from 1792px
+   right up through 4K. Uncapped: this band now runs from the point the
+   burger menu hides (1361px) to infinity, so there is no upper edge left
+   to outgrow next time a link is added. */
+@media (min-width: 1361px) {
   .nav-links { gap: clamp(0.4rem, 0.65vw, 0.85rem); }
   .nav-links a {
     font-size: 0.75rem;
