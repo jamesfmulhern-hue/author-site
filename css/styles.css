@@ -1756,6 +1756,15 @@ p { text-wrap: pretty; max-width: 68ch; }
   position: relative;
   z-index: 1;
 }
+.influence {
+  /* Defensive containment: on some phones/zoom levels a very long unbroken
+     word (e.g. a hyphenated surname) can otherwise push past the grid
+     column edge. min-width:0 lets this grid item shrink below its content's
+     natural size instead of forcing an overflow, and overflow-wrap catches
+     any word too long for the column. */
+  min-width: 0;
+  max-width: 100%;
+}
 .influence dt {
   font-family: var(--font-display);
   font-weight: 500;
@@ -1763,6 +1772,8 @@ p { text-wrap: pretty; max-width: 68ch; }
   letter-spacing: 0.04em;
   color: var(--color-oxblood);
   margin-bottom: var(--space-2);
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 .influence dd {
   font-family: var(--font-body);
@@ -1770,6 +1781,8 @@ p { text-wrap: pretty; max-width: 68ch; }
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.55;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 /* Amazon buy-link */
@@ -2337,7 +2350,13 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(var(--space-8), 3.5vw, var(--space-14));
+  /* Keep the flourishes flanking the text on ONE row always. Only the text
+     itself (.hero-genre-text) is allowed to wrap onto a second line — the
+     flex row itself must never wrap, or the left/right flourishes end up
+     stacked above/below the text instead of beside it, which reads as
+     off-center. */
+  flex-wrap: nowrap;
+  gap: clamp(var(--space-4), 2vw, var(--space-10));
   margin: 0;
   /* Generous, definite block padding so the words can really breathe */
   padding-block: clamp(var(--space-8), 3vw, var(--space-12));
@@ -2380,7 +2399,7 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
 }
 
 .hero-genre-flourish {
-  width: clamp(28px, 3vw, 44px);
+  width: clamp(20px, 2.2vw, 44px);
   height: auto;
   color: var(--color-gold);
   flex-shrink: 0;
@@ -2397,24 +2416,27 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   /* Allow wrapping always: the chip sits inside a grid column whose width
      varies with the hero layout, not just with the viewport, so nowrap text
      can overflow the gold border even on wide desktop screens. Wrapping
-     keeps the words inside the box at every width. */
+     keeps the words inside the box at every width. The row itself
+     (.hero-genre-chip) stays nowrap so the flourishes keep flanking this
+     text instead of wrapping onto their own line. */
   white-space: normal;
   overflow-wrap: normal;
   word-break: keep-all;
   text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
+  flex: 1 1 auto;
+  min-width: 0;
   max-width: 100%;
 }
 
 [data-theme="dark"] .hero-genre-text { color: var(--color-oxblood-bright); }
 
 /* The chip itself must never let its contents exceed its own box, no matter
-   the viewport or column width. Flex-wrap lets the text wrap onto a second
-   line instead of bleeding past the gold border. */
+   the viewport or column width. The row stays nowrap (set above) so the
+   flourishes keep flanking the text; only .hero-genre-text wraps internally
+   onto a second line if needed. */
 .hero-genre-chip {
   max-width: 100%;
-  flex-wrap: wrap;
-  row-gap: var(--space-2);
 }
 
 /* On narrow/medium screens, shrink the chip text further and hide the
