@@ -1632,6 +1632,18 @@ p { text-wrap: pretty; max-width: 68ch; }
 .book-card-cover .photo-cover { width: 78%; }
 .featured-book-image .photo-cover { width: 86%; }
 
+/* Some cover artwork is taller/narrower than the standard 2:3 frame
+   (e.g. title or imprint text sits close to the top/bottom edge).
+   Forcing object-fit:cover on these crops that text off. Use "contain"
+   instead so the full cover art is always visible, letterboxed on a
+   matching dark background rather than cropped. */
+.photo-cover.no-crop {
+  background: #14140f;
+}
+.photo-cover.no-crop img {
+  object-fit: contain;
+}
+
 /* Forthcoming badge */
 .forthcoming-badge {
   position: absolute;
