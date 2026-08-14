@@ -410,6 +410,32 @@ p { text-wrap: pretty; max-width: 68ch; }
   gap: var(--space-3);
 }
 
+.search-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  color: var(--color-gold);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-interactive), border-color var(--transition-interactive), color var(--transition-interactive);
+}
+.search-toggle:hover,
+.search-toggle:focus-visible {
+  color: var(--color-oxblood);
+  border-color: var(--color-gold);
+  background: color-mix(in oklab, var(--color-gold) 12%, transparent);
+}
+[data-theme="dark"] .search-toggle:hover,
+[data-theme="dark"] .search-toggle:focus-visible {
+  color: var(--color-oxblood-bright);
+}
+.search-toggle svg { width: 17px; height: 17px; }
+
 .menu-toggle { display: none; }
 
 /* Intermediate desktop range: 13 nav items overflow between the hamburger
@@ -4263,4 +4289,144 @@ h5, h6,
     overflow-wrap: normal;
     hyphens: none;
   }
+}
+
+/* ==========================================================================
+   Site Search — modal overlay, launched from the header search button
+   ========================================================================== */
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(var(--space-6), 8vh, var(--space-16)) var(--space-4);
+  background: color-mix(in oklab, #1a1410 78%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  overflow-y: auto;
+}
+.search-overlay.open { display: flex; }
+
+.search-modal {
+  width: 100%;
+  max-width: 640px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.search-modal-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-divider);
+}
+.search-modal-field svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+.search-modal-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+}
+.search-modal-input::placeholder { color: var(--color-text-muted); opacity: 0.7; }
+
+.search-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.search-modal-close:hover { color: var(--color-oxblood); background: color-mix(in oklab, var(--color-gold) 12%, transparent); }
+.search-modal-close svg { width: 16px; height: 16px; }
+
+.search-modal-results {
+  max-height: min(60vh, 480px);
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+}
+
+.search-result {
+  display: block;
+  padding: var(--space-3) var(--space-5);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-divider) 60%, transparent);
+}
+.search-result:last-child { border-bottom: none; }
+.search-result:hover,
+.search-result.active { background: color-mix(in oklab, var(--color-gold) 10%, transparent); }
+
+.search-result-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--color-oxblood);
+  margin-bottom: 2px;
+}
+[data-theme="dark"] .search-result-title { color: var(--color-oxblood-bright); }
+
+.search-result-snippet {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.search-result-snippet mark,
+.search-result-title mark {
+  background: color-mix(in oklab, var(--color-gold) 45%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.search-modal-empty,
+.search-modal-hint {
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.search-modal-loading {
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .search-overlay { padding: var(--space-4) var(--space-3); }
+  .search-modal-field { padding: var(--space-3) var(--space-4); }
+  .search-modal-input { font-size: var(--text-base); }
 }
