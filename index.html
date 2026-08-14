@@ -151,6 +151,42 @@
   ]
 }
 </script>
+<style>
+.key-essay-banner{
+  position:relative;
+  max-width:720px;margin:0 auto;
+  padding:var(--space-8) var(--space-8);
+  text-align:center;
+  border:1px solid var(--color-border);
+  background:
+    radial-gradient(120% 140% at 50% 0%, color-mix(in oklab, var(--color-gold) 10%, transparent), transparent 60%),
+    var(--color-surface);
+  box-shadow:var(--shadow-sm);
+}
+.key-essay-banner .deco-corners{position:absolute;inset:10px;pointer-events:none;}
+.key-essay-banner .deco-corners svg{position:absolute;width:34px;height:34px;color:var(--color-gold);stroke-width:1.6;}
+.key-essay-banner .deco-corners svg.tl{top:0;left:0;}
+.key-essay-banner .deco-corners svg.tr{top:0;right:0;transform:scaleX(-1);}
+.key-essay-banner .deco-corners svg.bl{bottom:0;left:0;transform:scaleY(-1);}
+.key-essay-banner .deco-corners svg.br{bottom:0;right:0;transform:scale(-1,-1);}
+.key-essay-star{font-size:0.7rem;letter-spacing:0.3em;color:var(--color-gold);margin:0 0 var(--space-3);}
+.key-essay-label{
+  font-family:var(--font-ui);font-size:var(--text-xs);letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--color-oxblood);margin:0 0 var(--space-3);font-weight:600;
+}
+[data-theme="dark"] .key-essay-label{color:var(--color-oxblood-bright);}
+.key-essay-title{
+  font-family:var(--font-deco);font-size:var(--text-lg);letter-spacing:0.03em;
+  color:var(--color-text);margin:0 0 var(--space-4);
+}
+.key-essay-title a{color:inherit;text-decoration:none;border-bottom:1px solid var(--color-divider);}
+.key-essay-title a:hover{color:var(--color-oxblood);border-color:var(--color-oxblood);}
+.key-essay-text{
+  font-family:var(--font-body);font-style:italic;color:var(--color-text-muted);
+  font-size:clamp(1rem,0.95rem + 0.2vw,1.08rem);line-height:1.6;margin:0;
+}
+@media (max-width:640px){.key-essay-banner{padding:var(--space-6) var(--space-5);}}
+</style>
 </head>
 <body>
 <!-- return-to-salon ribbon -->
@@ -420,10 +456,30 @@
           <span class="deco-plaque-rule"></span>
         </div>
         <h2 class="closer-look-title">Essays on the Work</h2>
-        <p>Essays on recurring imagery, religious interpretation, and working belief across the fiction and poetry &mdash; the repeated motifs read as a single compositional system, fire, water, the sacred hidden in shabby detail, the Assumption of Mary, communion, the poetry of <em>Crossings</em>, the allusions inside <em>Molly Bonamici</em>, a working philosophy, a credo, writing as communion, and comparative studies alongside Joyce, O&rsquo;Connor, and Carver.</p>
+        <p>Essays on recurring imagery, religious interpretation, and working belief across the fiction and poetry &mdash; the repeated motifs read as a single compositional system, fire, water, the sacred hidden in shabby detail, the Assumption of Mary, communion, the poetry of <em>Crossings</em>, the allusions inside <em>Molly Bonamici</em>, a working philosophy, a credo, writing as communion, teaching, style, and craft, and comparative studies alongside Joyce, O&rsquo;Connor, and Carver.</p>
+      </div>
+
+      <div class="key-essay-banner" style="margin-bottom:var(--space-10);">
+        <div class="deco-corners" aria-hidden="true">
+          <svg class="tl" viewBox="0 0 32 32" fill="none" stroke="currentColor"><path d="M2 14 V4 H12"/></svg>
+          <svg class="tr" viewBox="0 0 32 32" fill="none" stroke="currentColor"><path d="M2 14 V4 H12"/></svg>
+          <svg class="bl" viewBox="0 0 32 32" fill="none" stroke="currentColor"><path d="M2 14 V4 H12"/></svg>
+          <svg class="br" viewBox="0 0 32 32" fill="none" stroke="currentColor"><path d="M2 14 V4 H12"/></svg>
+        </div>
+        <p class="key-essay-star">&#9733;&#9733;&#9733;</p>
+        <p class="key-essay-label">Essential &middot; Start Here</p>
+        <p class="key-essay-title"><a href="teaching-at-fifty-six.html">Teaching at Fifty-Six</a></p>
+        <p class="key-essay-text">The single clearest window into James Mulhern&rsquo;s style, craft, and literary influences &mdash; his practice of resurrection and transfiguration, taking up the words of Whitman, Emerson, Thoreau, and Dickinson and making them new in the life of an actual classroom. A full critical apparatus traces every borrowing as a deliberate act of homage.</p>
+        <p style="margin-top:var(--space-5);"><a class="btn" href="teaching-at-fifty-six.html">Read the Essay</a></p>
       </div>
 
       <div class="read-more-grid fade-in">
+        <article class="read-more-card">
+          <span class="venue">On Craft &middot; In the Author&rsquo;s Own Words</span>
+          <span class="title">Teaching at Fifty-Six</span>
+          <p style="font-family:var(--font-body); font-size:var(--text-sm); color:var(--color-text-muted); margin-bottom:var(--space-4);">The essay behind the style &mdash; on Transcendentalist inheritance, resurrection and transfiguration, and the classroom as a form of communion, with a full critical apparatus of allusions and sources.</p>
+          <a href="teaching-at-fifty-six.html">Read the essay</a>
+        </article>
         <article class="read-more-card">
           <span class="venue">A Scholarly Essay &middot; On Recurrence as Method</span>
           <span class="title">The Habit of Return</span>
