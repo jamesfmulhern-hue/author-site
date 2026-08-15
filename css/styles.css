@@ -3,6 +3,12 @@
    Art Deco design system. Midnight + antique gold.
    ========================================================================== */
 
+/* <picture> wrappers (WebP + fallback) should be invisible to layout —
+   the inner <img> keeps every existing rule and sizing behavior. */
+picture {
+  display: contents;
+}
+
 :root, [data-theme="light"] {
   /* Surfaces — soft warm parchment, lets maroon + green lead */
   --color-bg: #f4ecd9;               /* warm parchment cream */
@@ -4429,4 +4435,383 @@ h5, h6,
   .search-overlay { padding: var(--space-4) var(--space-3); }
   .search-modal-field { padding: var(--space-3) var(--space-4); }
   .search-modal-input { font-size: var(--text-base); }
+}
+
+/* ==========================================================================
+   Mobile Quick-Nav — 4 primary touchpoints, fixed to bottom on small screens
+   ========================================================================== */
+
+.mobile-quicknav {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mobile-quicknav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-divider);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  [data-theme="dark"] .mobile-quicknav {
+    background: var(--color-surface);
+    border-top-color: var(--color-divider);
+  }
+  .mobile-quicknav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 9px 4px 8px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.15;
+    transition: color 0.15s ease;
+  }
+  .mobile-quicknav a svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+  .mobile-quicknav a:hover,
+  .mobile-quicknav a:active {
+    color: var(--color-oxblood);
+  }
+  [data-theme="dark"] .mobile-quicknav a:hover,
+  [data-theme="dark"] .mobile-quicknav a:active {
+    color: var(--color-oxblood-bright);
+  }
+  /* Keep page content and any fixed footer bars clear of the quick-nav */
+  body { padding-bottom: 58px; }
+}
+
+/* ==========================================================================
+   Filter Tabs — category filtering for essays.html / guides.html
+   ========================================================================== */
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: 0 0 clamp(var(--space-8), 4vw, var(--space-10));
+}
+
+.filter-tab {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  border-color: var(--color-oxblood);
+  color: var(--color-oxblood);
+}
+
+.filter-tab.is-active {
+  background: var(--color-oxblood);
+  border-color: var(--color-oxblood);
+  color: var(--color-surface);
+}
+
+[data-theme="dark"] .filter-tab.is-active {
+  background: var(--color-oxblood-bright);
+  border-color: var(--color-oxblood-bright);
+}
+
+.filter-tab-count {
+  opacity: 0.7;
+  font-size: 0.92em;
+}
+
+.read-more-card[hidden],
+.guide-group[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .filter-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-2);
+    margin-left: calc(-1 * var(--space-5));
+    margin-right: calc(-1 * var(--space-5));
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+  .filter-tabs::-webkit-scrollbar { display: none; }
+}
+
+/* ==========================================================================
+   Read-Excerpt Modal — on-site Chapter One preview (books.html)
+   ========================================================================== */
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-oxblood);
+  color: var(--color-oxblood);
+  cursor: pointer;
+}
+[data-theme="dark"] .btn-ghost {
+  border-color: var(--color-oxblood-bright);
+  color: var(--color-oxblood-bright);
+}
+.btn-ghost:hover {
+  background: var(--color-oxblood);
+  color: var(--color-surface);
+}
+
+.buy-link-outline {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  margin-left: var(--space-4);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.excerpt-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: rgba(20, 14, 10, 0.72);
+  backdrop-filter: blur(2px);
+}
+.excerpt-modal-overlay[hidden] { display: none; }
+
+.excerpt-modal {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  padding: clamp(var(--space-8), 5vw, var(--space-12));
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+
+.excerpt-modal-close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 34px; height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-divider);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+.excerpt-modal-close:hover {
+  color: var(--color-oxblood);
+  border-color: var(--color-oxblood);
+}
+
+.excerpt-modal-panel { display: none; }
+.excerpt-modal-panel.is-active { display: block; }
+
+.excerpt-modal-eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  margin-bottom: var(--space-3);
+}
+[data-theme="dark"] .excerpt-modal-eyebrow { color: var(--color-oxblood-bright); }
+
+.excerpt-modal-title {
+  font-family: var(--font-deco);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.excerpt-modal-body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-text);
+}
+.excerpt-modal-body p { margin-bottom: var(--space-5); }
+.excerpt-modal-body p:first-of-type::first-letter {
+  font-family: var(--font-deco);
+  font-size: 2.6em;
+  float: left;
+  line-height: 0.85;
+  padding: 0.05em 0.08em 0 0;
+  color: var(--color-oxblood);
+}
+[data-theme="dark"] .excerpt-modal-body p:first-of-type::first-letter {
+  color: var(--color-oxblood-bright);
+}
+
+.excerpt-modal-fade {
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  border-top: 1px dashed var(--color-divider);
+  padding-top: var(--space-5);
+  margin-top: var(--space-6) !important;
+}
+
+@media (max-width: 480px) {
+  .excerpt-modal { padding: var(--space-6); max-height: 90vh; }
+  .excerpt-modal-title { font-size: 1.4rem; }
+}
+
+/* ==========================================================================
+   Poem Audio Sample — Crossings collection page
+   ========================================================================== */
+
+.poem-audio-sample {
+  margin-top: var(--space-8);
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.poem-audio-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  margin: 0;
+  flex-shrink: 0;
+}
+[data-theme="dark"] .poem-audio-label { color: var(--color-oxblood-bright); }
+
+.poem-audio-sample audio {
+  flex: 1;
+  min-width: 220px;
+  height: 36px;
+}
+
+@media (max-width: 480px) {
+  .poem-audio-sample { flex-direction: column; align-items: stretch; }
+  .poem-audio-sample audio { width: 100%; }
+}
+
+/* ==========================================================================
+   Reader's Circle — email capture, site-wide (before footer)
+   ========================================================================== */
+
+.readers-circle {
+  padding: clamp(var(--space-12), 6vw, var(--space-16)) 0;
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.readers-circle-panel {
+  text-align: center;
+}
+
+.readers-circle-title {
+  font-family: var(--font-deco);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin: var(--space-4) 0 var(--space-4);
+}
+
+.readers-circle-copy {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin: 0 auto var(--space-7);
+}
+
+.readers-circle-btn {
+  display: inline-flex;
+}
+
+/* Compact hero-adjacent variant on the homepage */
+.readers-circle-hero {
+  margin-top: clamp(var(--space-8), 4vw, var(--space-10));
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+  justify-content: space-between;
+}
+
+.readers-circle-hero-text {
+  flex: 1;
+  min-width: 220px;
+}
+
+.readers-circle-hero-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  margin: 0 0 4px;
+}
+[data-theme="dark"] .readers-circle-hero-label { color: var(--color-oxblood-bright); }
+
+.readers-circle-hero-text p:last-child {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.readers-circle-hero .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
+  .readers-circle-hero .btn { width: 100%; justify-content: center; }
 }

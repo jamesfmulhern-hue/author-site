@@ -250,6 +250,13 @@
     </div>
   </nav>
 </header>
+<nav class="mobile-quicknav" aria-label="Quick navigation">
+  <a href="books.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 5.5C4 4.67 4.67 4 5.5 4H11a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4Z"/><path d="M20 5.5C20 4.67 19.33 4 18.5 4H13a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h7Z"/></svg><span>Books</span></a>
+  <a href="essays.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 4h9l4 4v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M9 11h6M9 15h6"/></svg><span>Essays &amp; Guides</span></a>
+  <a href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg><span>Services</span></a>
+  <a href="mailto:jamesfmulhern@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4Z"/><path d="M4 7l8 6 8-6"/></svg><span>Contact</span></a>
+</nav>
+
 
 <main>
 
@@ -284,9 +291,17 @@
           <a class="btn" href="books.html">Explore the Books</a>
           <a class="btn btn-ghost" href="writing.html">Read Sample Writing</a>
         </div>
+
+        <div class="readers-circle-hero">
+          <div class="readers-circle-hero-text">
+            <p class="readers-circle-hero-label">Join the Reader's Circle</p>
+            <p>Get <em>The Quiet Craft</em>, a free booklet of unreleased writing notes &mdash; plus occasional word of new work.</p>
+          </div>
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfmzhYFUIazf4DvBhS3mtj0-ysmjobpaVleI3NqfCXbBFIXVg/viewform" target="_blank" rel="noopener">Get the Free Booklet</a>
+        </div>
       </div>
       <figure class="hero-image">
-        <img src="images/hero.png" alt="A painterly portrait of a silver-haired writer at his desk, looking out over the Philadelphia skyline at dusk" loading="eager">
+        <picture><source srcset="images/hero.webp" type="image/webp"><img src="images/hero.png" alt="A painterly portrait of a silver-haired writer at his desk, looking out over the Philadelphia skyline at dusk" loading="eager"></picture>
       </figure>
     </div>
   </section>
@@ -378,7 +393,7 @@
             <svg class="br" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"><path d="M0 22 L0 14 L4 14 L4 8 L8 8 L8 4 L14 4 L14 0 L22 0"/><path d="M6 18 L18 18 L18 6"/><path d="M12 22 L22 22 L22 12"/><path d="M2 30 L2 26 L6 26 L6 22"/></svg>
           </div>
           <div class="photo-cover">
-            <img src="images/cover-give-them-unquiet-dreams.jpg" alt="Cover of Give Them Unquiet Dreams by James Mulhern" loading="lazy">
+            <picture><source srcset="images/cover-give-them-unquiet-dreams.webp" type="image/webp"><img src="images/cover-give-them-unquiet-dreams.jpg" alt="Cover of Give Them Unquiet Dreams by James Mulhern" loading="lazy"></picture>
           </div>
         </div>
 
@@ -414,7 +429,7 @@
       <div class="featured-book fade-in">
         <div class="featured-book-image">
           <div class="photo-cover">
-            <img src="images/cover-crossings-web.jpg" alt="Cover of Crossings, a poetry collection by James Mulhern" loading="lazy">
+            <picture><source srcset="images/cover-crossings-web.webp" type="image/webp"><img src="images/cover-crossings-web.jpg" alt="Cover of Crossings, a poetry collection by James Mulhern" loading="lazy"></picture>
           </div>
         </div>
         <div class="featured-book-info">
@@ -730,6 +745,21 @@
 </main>
 
 <!-- ============== FOOTER ============== -->
+<section class="readers-circle" aria-labelledby="readers-circle-heading">
+  <div class="container container-narrow">
+    <div class="readers-circle-panel">
+      <div class="deco-plaque" role="presentation">
+        <span class="deco-plaque-rule"></span>
+        <span class="deco-plaque-text">Reader's Circle</span>
+        <span class="deco-plaque-rule"></span>
+      </div>
+      <h2 id="readers-circle-heading" class="readers-circle-title">Join the Reader's Circle</h2>
+      <p class="readers-circle-copy">Get <em>The Quiet Craft: A Working Writer's Notebook</em> &mdash; a short, unreleased booklet of working notes on craft &mdash; free, plus occasional word of new essays, poems, and guides. No spam, unsubscribe anytime.</p>
+      <a class="btn readers-circle-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfmzhYFUIazf4DvBhS3mtj0-ysmjobpaVleI3NqfCXbBFIXVg/viewform" target="_blank" rel="noopener">Join the Circle &amp; Get the Booklet</a>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
