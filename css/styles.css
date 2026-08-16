@@ -410,6 +410,73 @@ p { text-wrap: pretty; max-width: 68ch; }
   left: 20%;
 }
 
+/* Nav groups: on the wide desktop bar, each group becomes a click-to-open
+   dropdown (same visual language as the rest of the nav) instead of a
+   flat run of links. The accordion styling below governs the mobile
+   hamburger menu, which is a separate, simpler stacked layout. */
+.nav-group {
+  position: relative;
+}
+.nav-group > details > summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: clamp(0.72rem, 0.6rem + 0.35vw, 0.85rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-block: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.nav-group > details > summary::-webkit-details-marker {
+  display: none;
+}
+.nav-group > details > summary::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  margin-left: 2px;
+}
+.nav-group:hover > details > summary,
+.nav-group > details[open] > summary {
+  color: var(--color-text);
+}
+.nav-group > details > ul {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2) 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  box-shadow: var(--shadow-sm);
+  z-index: 20;
+  display: none;
+}
+.nav-group > details[open] > ul {
+  display: flex;
+  flex-direction: column;
+}
+.nav-group > details > ul li {
+  white-space: nowrap;
+}
+.nav-group > details > ul a {
+  display: block;
+  padding: var(--space-2) var(--space-5);
+}
+.nav-group > details > ul a::after {
+  display: none;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -476,6 +543,75 @@ p { text-wrap: pretty; max-width: 68ch; }
     color: var(--color-gold);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
+  }
+
+  /* Grouped accordion sections inside the open mobile menu — collapses
+     the 15-item flat list down to Home + 4 tappable groups. */
+  .nav-links.open { align-items: stretch; }
+
+  .nav-links .nav-group {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-group > details {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-group > details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .nav-group > details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Suppress the desktop diagonal-caret glyph — the mobile accordion
+     uses a +/− indicator instead, set via ::after below. */
+  .nav-group > details > summary::before {
+    display: none;
+  }
+
+  .nav-group > details > summary::after {
+    content: "+";
+    font-size: 1rem;
+    color: var(--color-gold);
+    transition: transform var(--transition-interactive);
+  }
+
+  .nav-group > details[open] > summary::after {
+    content: "\2212";
+  }
+
+  .nav-group > details > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    list-style: none;
+    padding: var(--space-3) var(--space-3) var(--space-1) var(--space-4);
+    margin: 0;
+    position: static;
+    top: auto; left: auto; transform: none;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav-group > details > ul a {
+    padding: var(--space-2) 0;
   }
 }
 

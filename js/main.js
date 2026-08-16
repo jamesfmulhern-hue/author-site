@@ -40,4 +40,36 @@
   window.addEventListener('resize', () => {
     if (window.innerWidth > 760) closeMenu();
   });
+
+  // Desktop nav dropdowns ("The Work", "Read & Discuss", etc.): open on
+  // hover, close on mouse-leave or outside click. Below the 1360px
+  // hamburger breakpoint these same <details> elements become plain
+  // tap-to-expand accordion groups, handled entirely by native <details>
+  // behavior with no extra JS needed.
+  const DESKTOP_BREAKPOINT = 1360;
+  const navGroups = document.querySelectorAll('.nav-group > details');
+
+  navGroups.forEach((details) => {
+    const group = details.closest('.nav-group');
+
+    group.addEventListener('mouseenter', () => {
+      if (window.innerWidth > DESKTOP_BREAKPOINT) details.open = true;
+    });
+    group.addEventListener('mouseleave', () => {
+      if (window.innerWidth > DESKTOP_BREAKPOINT) details.open = false;
+    });
+
+    // Prevent native click-toggle from fighting the hover state on desktop.
+    const summary = details.querySelector('summary');
+    summary.addEventListener('click', (event) => {
+      if (window.innerWidth > DESKTOP_BREAKPOINT) event.preventDefault();
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (window.innerWidth <= DESKTOP_BREAKPOINT) return;
+    navGroups.forEach((details) => {
+      if (!details.contains(event.target)) details.open = false;
+    });
+  });
 })();
