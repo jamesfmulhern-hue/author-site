@@ -509,6 +509,36 @@ p { text-wrap: pretty; max-width: 68ch; }
 }
 .search-toggle svg { width: 17px; height: 17px; }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  color: var(--color-gold);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-interactive), border-color var(--transition-interactive), color var(--transition-interactive);
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--color-oxblood);
+  border-color: var(--color-gold);
+  background: color-mix(in oklab, var(--color-gold) 12%, transparent);
+}
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .theme-toggle:focus-visible {
+  color: var(--color-oxblood-bright);
+}
+.theme-toggle svg { width: 17px; height: 17px; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
 .menu-toggle { display: none; }
 
 /* Intermediate desktop range: 13 nav items overflow between the hamburger

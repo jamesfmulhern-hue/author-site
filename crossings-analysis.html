@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crossings — A Close Reading — James Mulhern</title>
@@ -114,6 +116,10 @@
       </ul></details></li>
     </ul>
     <div class="nav-actions">
+            <button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch to night mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M4.4 4.4l2.1 2.1M17.5 17.5l2.1 2.1M2.5 12h3M18.5 12h3M4.4 19.6l2.1-2.1M17.5 6.5l2.1-2.1"/></svg>
+      </button>
       <button class="search-toggle" data-search-toggle type="button" aria-label="Search the site (press / )">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21 L16.65 16.65"/></svg>
       </button>
@@ -320,6 +326,7 @@
   </div>
 </footer>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/theme-toggle.js" defer></script>
 <script src="js/main.js"></script>
 <script src="js/search.js" defer></script>
 <div style="background:#f8f5ee;border-top:1px solid #d4c9a4;padding:16px 20px;text-align:center;font-family:'EB Garamond','Cinzel',Georgia,serif;font-size:0.9rem;color:#5a5a5a">
