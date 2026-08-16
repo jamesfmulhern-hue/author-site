@@ -4672,7 +4672,7 @@ h5, h6,
   color: var(--color-text);
 }
 .excerpt-modal-body p { margin-bottom: var(--space-5); }
-.excerpt-modal-body p:first-of-type::first-letter {
+.excerpt-modal-body p:first-of-type:not(.excerpt-modal-epigraph)::first-letter {
   font-family: var(--font-deco);
   font-size: 2.6em;
   float: left;
@@ -4680,9 +4680,30 @@ h5, h6,
   padding: 0.05em 0.08em 0 0;
   color: var(--color-oxblood);
 }
-[data-theme="dark"] .excerpt-modal-body p:first-of-type::first-letter {
+[data-theme="dark"] .excerpt-modal-body p:first-of-type:not(.excerpt-modal-epigraph)::first-letter {
   color: var(--color-oxblood-bright);
 }
+
+.excerpt-modal-epigraph {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  border-left: 2px solid var(--color-brass);
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-7) !important;
+}
+.excerpt-modal-epigraph-attr {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-style: normal;
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+}
+[data-theme="dark"] .excerpt-modal-epigraph-attr { color: var(--color-oxblood-bright); }
 
 .excerpt-modal-fade {
   font-style: italic;
