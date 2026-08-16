@@ -149,7 +149,6 @@
 | A Prayer for Home | Literary Books & Reissues | ebook; paperback | — | $2.99 ebook; $11.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs cover/reissue — READY. Sources: Master Catalog v2; Product Index v2 |
 | Assumptions and Other Stories | Literary Books & Reissues | ebook; paperback | — | $3.99 ebook; $14.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs cover/reissue — READY. Sources: Master Catalog v2; Product Index v2 |
 | Give Them Unquiet Dreams | Literary Books & Reissues | ebook; paperback | — | $3.99 ebook; $14.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs cover/reissue — READY. Sources: Master Catalog v2; Product Index v2 |
-| Mia Bambina and Other Stories | Literary Books & Reissues | ebook; paperback; hardcover | — | $4.99 ebook; $16.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs building — IN DEVELOPMENT. Sources: Master Catalog v2; Product Index v2 |
 | Molly Bonamici | Literary Books & Reissues | ebook; paperback | — | $3.99 ebook; $14.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs cover/reissue — READY. Sources: Master Catalog v2; Product Index v2 |
 | The Weather of the House | Literary Books & Reissues | ebook; print | — | $3.99 ebook; $13.99 print | Silver Current Press site | Needs building/cover — catalog listing. Sources: Silver_Current_Press_Product_Catalog.md/.docx |
 | The Weight of Small Mercies | Literary Books & Reissues | ebook; paperback; hardcover; print | — | $4.99 ebook; $15.99 paperback | KDP; IngramSpark; Apple; Kobo; Google Play; Silver Current Press site | Needs building — IN DEVELOPMENT. Sources: Master Catalog v2; Product Index v2; Silver_Current_Press_Product_Catalog.md/.docx |
@@ -166,5 +165,5 @@
 - Free Lead Magnets: **3**
 - Press/Marketing Materials: **12**
 - Submission & Publishing Guides: **38**
-- Literary Books & Reissues: **7**
-- **Total: 134**
+- Literary Books & Reissues: **6**
+- **Total: 133**
