@@ -71,6 +71,21 @@
   font-size:clamp(1rem,0.95rem + 0.2vw,1.08rem);line-height:1.6;margin:0;
 }
 @media (max-width:640px){.key-essay-banner{padding:var(--space-6) var(--space-5);}}
+
+/* Painterly figure — Hopper-style essay imagery */
+.essay-figure{margin:var(--space-8, 2rem) 0;}
+.essay-figure img{
+  width:100%;height:auto;display:block;
+  border:1px solid var(--color-border);
+  box-shadow:var(--shadow-sm);
+}
+.essay-figure figcaption{
+  font-family:var(--font-deco);font-size:var(--text-xs);letter-spacing:0.08em;
+  color:var(--color-text-faint);text-align:center;font-style:italic;
+  margin-top:var(--space-3, 0.75rem);
+}
+.essay-figure-hero{max-width:var(--content-wide);margin-inline:auto;margin-top:var(--space-8, 2rem);}
+.essay-figure-inline{max-width:640px;margin-inline:auto;}
 </style>
 <script type="application/ld+json">
 {
@@ -200,6 +215,10 @@
       <h1>Essays</h1>
       <p>Short critical and personal essays on the recurring images, religious interpretation, governing methods, and working beliefs behind the fiction, poetry, and teaching of James Mulhern.</p>
     </div>
+    <figure class="essay-figure essay-figure-hero container">
+      <img src="images/hopper/essays_hub_hero.webp" alt="Painting in the style of Edward Hopper of a sunlit writing desk beside a tall window overlooking a coastal house" loading="eager" width="1400" height="788">
+      <figcaption>Study in Light &middot; after Edward Hopper</figcaption>
+    </figure>
   </section>
 
   <section class="section">
