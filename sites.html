@@ -5,9 +5,9 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>All My Sites &mdash; James Mulhern &amp; Silver Current Press</title>
-<meta name="description" content="A complete map of James Mulhern's web properties: Silver Current Press, The 2601 Literary Salon, The Art of Telling, submission guides, the press kit, and more.">
-<meta name="keywords" content="James Mulhern websites, Silver Current Press, 2601 Literary Salon, Art of Telling, writer resources, submission guides, press kit">
+<title>All My Sites &amp; Books &mdash; James Mulhern &amp; Silver Current Press</title>
+<meta name="description" content="One page for the whole shelf and the whole map: every book, every website, and every reading room I keep &mdash; Silver Current Press, The 2601 Literary Salon, The Art of Telling, the submission guides, the press kit, and the Amazon listings.">
+<meta name="keywords" content="James Mulhern books, James Mulhern websites, Silver Current Press, 2601 Literary Salon, Art of Telling, Amazon author page, submission guides, press kit, Give Them Unquiet Dreams, Molly Bonamici">
 <meta name="author" content="James Mulhern">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.authorjamesmulhern.com/sites.html">
@@ -16,8 +16,8 @@
 <meta property="og:site_name" content="James Mulhern">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.authorjamesmulhern.com/sites.html">
-<meta property="og:title" content="All My Sites &mdash; James Mulhern">
-<meta property="og:description" content="A complete map of James Mulhern's web properties, from Silver Current Press to the writing courses and submission guides.">
+<meta property="og:title" content="All My Sites &amp; Books &mdash; James Mulhern">
+<meta property="og:description" content="One page for the whole shelf and the whole map &mdash; every book, every website, and every reading room in one place.">
 <meta property="og:image" content="https://www.authorjamesmulhern.com/images/hero.png">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="1536">
@@ -26,8 +26,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="All My Sites &mdash; James Mulhern">
-<meta name="twitter:description" content="A complete map of James Mulhern's web properties, from Silver Current Press to the writing courses and submission guides.">
+<meta name="twitter:title" content="All My Sites &amp; Books &mdash; James Mulhern">
+<meta name="twitter:description" content="One page for the whole shelf and the whole map &mdash; every book, every website, and every reading room in one place.">
 <meta name="twitter:image" content="https://www.authorjamesmulhern.com/images/hero.png">
 <meta name="twitter:image:alt" content="Art Deco still life &mdash; the official site of novelist James Mulhern">
 
@@ -147,6 +147,79 @@
     border-radius: 2px;
     align-self: flex-start;
   }
+  /* Book cards — same footprint as site cards, warmer accents */
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-6);
+  }
+  .book-card {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: var(--space-6) var(--space-6) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .book-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-brass);
+    box-shadow: 0 14px 30px -18px rgba(42, 30, 31, 0.35);
+  }
+  .book-card-eyebrow {
+    font-family: var(--font-ui);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    color: var(--color-forest);
+  }
+  .book-card-star {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-oxblood);
+    background: var(--color-oxblood-soft, rgba(107, 31, 36, 0.08));
+    padding: 2px 8px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+  .book-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.25;
+    font-style: italic;
+  }
+  .book-card-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+    margin: 0;
+  }
+  .book-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    border-top: 1px solid var(--color-divider);
+    padding-top: var(--space-3);
+    margin-top: var(--space-1);
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .book-card-links a {
+    color: var(--color-oxblood);
+    text-decoration: none;
+  }
+  .book-card-links a:hover { color: var(--color-brass-deep); }
 </style>
 <script type="application/ld+json">
 {
@@ -166,9 +239,19 @@
       "@type": "CollectionPage",
       "@id": "https://www.authorjamesmulhern.com/sites.html#webpage",
       "url": "https://www.authorjamesmulhern.com/sites.html",
-      "name": "All My Sites — James Mulhern & Silver Current Press",
-      "headline": "All My Sites — James Mulhern & Silver Current Press",
-      "description": "A complete map of James Mulhern's web properties: Silver Current Press, The 2601 Literary Salon, The Art of Telling, submission guides, the press kit, and more.",
+      "name": "All My Sites & Books — James Mulhern & Silver Current Press",
+      "headline": "All My Sites & Books — James Mulhern & Silver Current Press",
+      "description": "One page for the whole shelf and the whole map: every book, every website, and every reading room James Mulhern keeps — Silver Current Press, the 2601 Salon, the Art of Telling, submission guides, press kit, Amazon.",
+      "hasPart": [
+        {"@type": "Book", "name": "Give Them Unquiet Dreams", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/1082240621"},
+        {"@type": "Book", "name": "Molly Bonamici", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/1523807806"},
+        {"@type": "Book", "name": "A Prayer for Home", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/1523344067"},
+        {"@type": "Book", "name": "Crossings: Selected Poems", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/B0HF1KRF4B"},
+        {"@type": "Book", "name": "All We Ever Needed: Stories", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/B0H7B65S88"},
+        {"@type": "Book", "name": "About Aiden: Selected Stories", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/B07FBV9V8C"},
+        {"@type": "Book", "name": "Assumptions and Other Stories", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/B01AKC5XFY"},
+        {"@type": "Book", "name": "Blindfolded and Other Stories", "author": {"@id": "https://www.authorjamesmulhern.com/#person"}, "url": "https://www.amazon.com/dp/B088Y1DNX2"}
+      ],
       "author": {
         "@id": "https://www.authorjamesmulhern.com/#person"
       },
@@ -273,14 +356,113 @@
   <section class="page-header">
     <div class="container">
       <p class="page-header-eyebrow">A Guide for Readers, Writers &amp; Students</p>
-      <h1>All My Sites</h1>
-      <p>One writer, one small press, and a scattering of classrooms and reading rooms across the internet. This page is the map &mdash; where to go for the books, the courses, the submission guidelines, and everything in between.</p>
+      <h1>All My Sites &amp; Books</h1>
+      <p>One writer keeps returning to the same waters &mdash; the same streets, faces, and preoccupations &mdash; and the work spreads out from there into books, classrooms, reading rooms, and a small press. This page is the map. Below you will find every published title with its Amazon listing, every website I keep, and every doorway into the wider Silver Current Press ecosystem, arranged the way a reader would look for them rather than the way the internet happens to file them.</p>
     </div>
   </section>
 
-  <!-- The Press & The Salon -->
+  <!-- The Books -->
   <section class="section">
     <div class="container">
+
+      <div class="sites-group">
+        <div class="sites-group-title">
+          <div class="deco-plaque" role="presentation">
+            <span class="deco-plaque-rule"></span>
+            <span class="deco-plaque-text">The Books</span>
+            <span class="deco-plaque-rule"></span>
+          </div>
+          <h2>The Whole Shelf, in One Place</h2>
+          <p>Novels, story collections, and poems &mdash; each linked to its Amazon listing. For the deeper catalogue, essays, and reading&#8209;group guides, see <a href="books.html">the full Books page</a>.</p>
+        </div>
+        <div class="book-grid fade-in">
+
+          <article class="book-card">
+            <span class="book-card-star">&#9733; Kirkus Starred</span>
+            <p class="book-card-eyebrow">Novel &middot; 2018</p>
+            <h3 class="book-card-title">Give Them Unquiet Dreams</h3>
+            <p class="book-card-desc">A luminous, beautifully told fairy tale grounded in history and elevated by spirit. Named one of <em>Kirkus</em>&rsquo;s Best Books of 2019 &mdash; the novel readers most often ask me about first.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/1082240621" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="unquiet-dreams-comprehensive-study.html">Study Guide</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Novel &middot; Italian&#8209;American Boston</p>
+            <h3 class="book-card-title">Molly Bonamici</h3>
+            <p class="book-card-desc">A coming&#8209;of&#8209;age novel whose stubborn, tender protagonist descends from Defoe&rsquo;s <em>Moll Flanders</em> and from a lineage of Boston women who refused to be tidied.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/1523807806" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="molly-bonamici-comprehensive-study.html">Study Guide</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Novel &middot; Grief &amp; the Sacred</p>
+            <h3 class="book-card-title">A Prayer for Home</h3>
+            <p class="book-card-desc">A novel about faith, family, and the small mercies that keep a life together after the loudest things have gone quiet.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/1523344067" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="a-prayer-for-home-comprehensive-study.html">Study Guide</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Poetry &middot; Selected Poems</p>
+            <h3 class="book-card-title">Crossings: Selected Poems</h3>
+            <p class="book-card-desc">Twenty years of poems gathered under one cover &mdash; water, fire, memory, and the thin places where the living and the dead keep company.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/B0HF1KRF4B" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="crossings-collection.html">Read &amp; Study</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Stories &middot; Silver Current Press</p>
+            <h3 class="book-card-title">All We Ever Needed: Stories</h3>
+            <p class="book-card-desc">A collection built on recurrence &mdash; the same faces returning under new names, the ordinary revealed as holy in the middle of an ordinary afternoon.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/B0H7B65S88" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="all-we-ever-needed-essay.html">Essay on the Book</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Stories &middot; The Aiden Cycle</p>
+            <h3 class="book-card-title">About Aiden: Selected Stories</h3>
+            <p class="book-card-desc">Selected stories tracing a single family across decades and generations &mdash; the linked&#8209;story mode Silver Current Press keeps returning to.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/B07FBV9V8C" target="_blank" rel="noopener">Amazon &rarr;</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Stories &middot; Early Collection</p>
+            <h3 class="book-card-title">Assumptions and Other Stories</h3>
+            <p class="book-card-desc">The story collection where the recurring images first surface &mdash; stigmata as ordinary stains, sunlight as hellfire, and mercy as the shape a life takes when nothing else works.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/B01AKC5XFY" target="_blank" rel="noopener">Amazon &rarr;</a>
+              <a href="textual-history-of-assumptions.html">Textual History</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <p class="book-card-eyebrow">Stories &middot; Later Collection</p>
+            <h3 class="book-card-title">Blindfolded and Other Stories</h3>
+            <p class="book-card-desc">A darker companion to <em>Assumptions</em> &mdash; stories about what people let themselves not see, and what refuses to stay hidden anyway.</p>
+            <div class="book-card-links">
+              <a href="https://www.amazon.com/dp/B088Y1DNX2" target="_blank" rel="noopener">Amazon &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p style="text-align:center; margin-top: var(--space-8); font-family: var(--font-body); color: var(--color-text-muted);">
+          Also on the shelf: the teaching titles, the anthology credits, and the earlier chapbooks. See <a href="books.html">the full Books page</a> or <a href="https://www.amazon.com/stores/James-Mulhern/author/B00HS4D2AQ" target="_blank" rel="noopener">the Amazon Author Page</a> for the complete list.
+        </p>
+      </div>
+
       <div class="sites-group">
         <div class="sites-group-title">
           <div class="deco-plaque" role="presentation">
