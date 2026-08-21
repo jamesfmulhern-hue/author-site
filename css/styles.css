@@ -2607,13 +2607,11 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   flex-wrap: nowrap;
   gap: clamp(var(--space-4), 2vw, var(--space-10));
   margin: 0;
-  /* Generous, definite block padding so the words can really breathe */
-  padding-block: clamp(var(--space-8), 3vw, var(--space-12));
-  padding-inline: clamp(var(--space-10), 4vw, var(--space-16));
+  /* Tighter block padding so the strong single-line type fits at all widths */
+  padding-block: clamp(var(--space-5), 1.8vw, var(--space-8));
+  padding-inline: clamp(var(--space-6), 2.5vw, var(--space-10));
   position: relative;
-  /* Hard clamp so the chip can never paint outside its own column,
-     even if a child would otherwise force it to overflow into the
-     hero image beside it. */
+  /* Anti-overlap safety: chip can never paint outside its own column. */
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -2663,15 +2661,15 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
 
 .hero-genre-text {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(0.78rem, 0.7rem + 0.3vw, 1rem);
-  letter-spacing: clamp(0.12em, 0.1em + 0.2vw, 0.2em);
+  font-weight: 700;
+  /* Strong readable size, sized so "FICTION · POETRY · NONFICTION"
+     fits on one row inside the hero-text column at every desktop width. */
+  font-size: clamp(0.9rem, 0.65rem + 0.42vw, 1.05rem);
+  letter-spacing: clamp(0.1em, 0.06em + 0.15vw, 0.16em);
   text-transform: uppercase;
   color: var(--color-oxblood);
   line-height: 1.2;
-  /* One centered line: keep the genre line on a single row and let the
-     flex parent center it, so the text never wraps onto multiple lines
-     or drifts off-center inside the gold box. */
+  /* One centered line — the flex parent has overflow:hidden as safety. */
   white-space: nowrap;
   text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
@@ -2692,12 +2690,18 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
    inside the box without clipping. */
 @media (max-width: 900px) {
   .hero-genre-text {
-    font-size: 0.72rem !important;
+    font-size: 0.88rem !important;
     letter-spacing: 0.12em !important;
   }
   .hero-genre-chip {
     padding-inline: var(--space-6) !important;
     padding-block: var(--space-5) !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-genre-text {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.1em !important;
   }
 }
 
