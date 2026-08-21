@@ -2611,6 +2611,13 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   padding-block: clamp(var(--space-8), 3vw, var(--space-12));
   padding-inline: clamp(var(--space-10), 4vw, var(--space-16));
   position: relative;
+  /* Hard clamp so the chip can never paint outside its own column,
+     even if a child would otherwise force it to overflow into the
+     hero image beside it. */
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   background:
     linear-gradient(180deg,
       color-mix(in oklab, var(--color-surface) 82%, var(--color-gold) 18%) 0%,
@@ -2651,7 +2658,11 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   width: clamp(20px, 2.2vw, 44px);
   height: auto;
   color: var(--color-gold);
-  flex-shrink: 0;
+  /* Allow the flourishes to shrink to zero rather than force the chip
+     to overflow its column. On narrow hero-text columns they're hidden
+     entirely by the media query below. */
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .hero-genre-text {
@@ -2669,8 +2680,9 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
      (.hero-genre-chip) stays nowrap so the flourishes keep flanking this
      text instead of wrapping onto their own line. */
   white-space: normal;
-  overflow-wrap: normal;
-  word-break: keep-all;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
   text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
   flex: 1 1 auto;
@@ -2689,8 +2701,12 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
 }
 
 /* On narrow/medium screens, shrink the chip text further and hide the
-   flourishes so it stays readable without breaking layout. */
-@media (max-width: 900px) {
+   flourishes so it stays readable without breaking layout. The upper
+   bound covers the awkward mid-desktop range (881–1200px) where the
+   two-column hero grid is active but the left column is still too
+   narrow to hold the flourishes + full genre line without spilling
+   into the book image on the right. */
+@media (max-width: 1200px) {
   .hero-genre-flourish { display: none; }
   .hero-genre-text {
     font-size: 0.78rem !important;
