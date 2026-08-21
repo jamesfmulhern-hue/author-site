@@ -1056,6 +1056,27 @@ p { text-wrap: pretty; max-width: 68ch; }
 .featured-book-image .deco-corners svg.bl { bottom: 0; left: 0; transform: scaleY(-1); }
 .featured-book-image .deco-corners svg.br { bottom: 0; right: 0; transform: scale(-1, -1); }
 
+/* Deco corner ornaments on the hero portrait — echoes the featured-book
+   frame so the portrait reads as part of the same Art Deco vocabulary. */
+.hero-image .deco-corners {
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-image .deco-corners svg {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  color: var(--color-gold);
+  stroke-width: 1.8;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35));
+}
+.hero-image .deco-corners svg.tl { top: 0; left: 0; }
+.hero-image .deco-corners svg.tr { top: 0; right: 0; transform: scaleX(-1); }
+.hero-image .deco-corners svg.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.hero-image .deco-corners svg.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
 .featured-book-image .book-cover,
 .book-card-cover .book-cover {
   width: 86%;
