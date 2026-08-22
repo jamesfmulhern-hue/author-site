@@ -2606,7 +2606,11 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
      off-center. */
   flex-wrap: nowrap;
   gap: clamp(var(--space-4), 2vw, var(--space-10));
-  margin: 0;
+  /* Hug the text exactly and center the whole box in its column, so the
+     genre line sits as a neat, self-contained plaque rather than a full-width
+     bar — and can never leave dead space on either side. */
+  width: fit-content;
+  margin-inline: auto;
   /* Tighter block padding so the strong single-line type fits at all widths */
   padding-block: clamp(var(--space-5), 1.8vw, var(--space-8));
   padding-inline: clamp(var(--space-6), 2.5vw, var(--space-10));
@@ -2668,9 +2672,11 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
   letter-spacing: clamp(0.1em, 0.06em + 0.15vw, 0.16em);
   text-transform: uppercase;
   color: var(--color-oxblood);
-  line-height: 1.2;
-  /* One centered line — the flex parent has overflow:hidden as safety. */
-  white-space: nowrap;
+  line-height: 1.25;
+  /* Never clip: drop nowrap so the line can wrap gracefully if the column
+     narrows, and balance the break so any two-line result stays centered and
+     even instead of leaving an orphaned word. */
+  text-wrap: balance;
   text-align: center;
   text-shadow: 0 1px 0 color-mix(in oklab, var(--color-gold) 25%, transparent);
   min-width: 0;
@@ -2703,6 +2709,19 @@ em em, em cite, em i, i em, i cite, i i, cite em, cite i {
     font-size: 0.78rem !important;
     letter-spacing: 0.1em !important;
   }
+}
+
+/* ==========================================================================
+   Hopper-style imagery — gentle global lift.
+   The painterly hero portrait and the Edward Hopper-style scene images are
+   intentionally moody, but read too dark on many screens. A single soft
+   brightness lift (with a touch of contrast roll-off and saturation to keep
+   highlights from blowing out) lightens every one of them site-wide without
+   re-encoding any files, and is easy to tune up or down in one place.
+   ========================================================================== */
+.hero-image img,
+img[src*="images/hopper"] {
+  filter: brightness(1.18) contrast(0.97) saturate(1.03);
 }
 
 /* ==========================================================================
