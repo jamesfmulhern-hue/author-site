@@ -5055,3 +5055,40 @@ h5, h6,
   .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
   .readers-circle-hero .btn { width: 100%; justify-content: center; }
 }
+
+/* ==========================================================================
+   Site notice (under-construction)
+   ========================================================================== */
+.site-notice {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-5) var(--space-8);
+  text-align: center;
+}
+.site-notice-text {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  font-style: italic;
+  color: var(--color-text);
+  margin: 0;
+}
+.site-notice-label {
+  display: block;
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  color: var(--color-oxblood);
+  margin-bottom: 10px;
+}
+.site-notice-text a {
+  color: var(--color-oxblood);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.site-notice-text a:hover {
+  color: var(--color-brass-deep, #6b5128);
+}
