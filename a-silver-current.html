@@ -59,82 +59,29 @@
   color: var(--color-text-muted);
   background: none;
 }
-.sch-body blockquote.sch-quote p { margin: 0; font-style: italic; }
-.sch-body sup.fn { line-height: 0; font-size: 0.68em; }
-.sch-body sup.fn a { text-decoration: none; padding: 0 0.12em; font-family: var(--font-body); font-weight: 600; }
-.sch-body .sch-sig { text-align: right; font-style: italic; color: var(--color-text-muted); margin-top: 2.2em; }
-.sch-notes { margin-top: var(--space-6, 1.5rem); }
-.sch-notes ol { list-style: none; padding: 0; margin: 0; }
-.sch-notes li {
-  font-size: 0.86rem; line-height: 1.62; color: var(--color-text-muted);
-  margin: 0 0 0.85em; padding-left: 2.1em; position: relative;
-  word-break: normal; overflow-wrap: anywhere; scroll-margin-top: 6.5rem;
+.sch-body .sch-abstract {
+  margin: 0 0 2.2em;
+  padding: 1.1em 1.4em;
+  border: 1px solid var(--color-divider, #d4c69e);
+  background: var(--color-panel, #faf6ec);
+  font-size: 0.96em;
+  line-height: 1.55;
 }
-.sch-notes .nnum { position: absolute; left: 0; width: 1.8em; text-align: right; font-weight: 700; color: #6b1f24 !important; }
-.sch-notes .backref { text-decoration: none; opacity: 0.6; }
-.sch-works p { font-size: 0.9rem; line-height: 1.62; color: var(--color-text-muted); }
-.sch-body h2.sch-h2, .sch-body h3.sch-h3 { scroll-margin-top: 6.5rem; }
-.sch-abstract {
-  border-top: 1px solid var(--color-divider, #d4c69e);
-  border-bottom: 1px solid var(--color-divider, #d4c69e);
-  padding: 1.1em 0; margin: 0 0 2.2em;
-  font-size: 0.95rem; line-height: 1.66; color: var(--color-text-muted);
+.sch-body .sch-abstract .label {
+  display: block;
+  font-family: var(--font-deco);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-oxblood, #6b1f24);
+  margin-bottom: 0.5em;
 }
-.sch-abstract .label {
-  display: block; font-family: var(--font-deco); font-size: 0.74rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--color-oxblood, #6b1f24); margin-bottom: 0.5em;
-}
+.sch-body .sch-sig { font-style: italic; color: var(--color-text-muted); }
+.sch-body .sch-works, .sch-body .sch-notes { font-size: 0.9em; color: var(--color-text-muted); }
+.sch-body .sch-works p, .sch-body .sch-notes p { margin-bottom: 0.7em; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://www.authorjamesmulhern.com/#person",
-      "name": "James Mulhern",
-      "url": "https://www.authorjamesmulhern.com/",
-      "sameAs": [
-        "https://www.amazon.com/stores/James-Mulhern/author/B00HS4D2AQ",
-        "https://silvercurrentpress.com/"
-      ]
-    },
-    {
-      "@type": "Article",
-      "@id": "https://www.authorjamesmulhern.com/a-silver-current.html#webpage",
-      "url": "https://www.authorjamesmulhern.com/a-silver-current.html",
-      "name": "A Silver Current: Reading James F. Mulhern's Catalog as One Continuous Book — James Mulhern",
-      "headline": "A Silver Current: Reading James F. Mulhern's Catalog as One Continuous Book — James Mulhern",
-      "description": "A capstone critical essay arguing that James Mulhern's novels, stories, and poems form one continuous book, in the tradition of Faulkner's Yoknapatawpha.",
-      "author": {
-        "@id": "https://www.authorjamesmulhern.com/#person"
-      },
-      "publisher": {
-        "@id": "https://www.authorjamesmulhern.com/#person"
-      },
-      "about": {
-        "@id": "https://www.authorjamesmulhern.com/#person"
-      },
-      "isPartOf": {
-        "@id": "https://www.authorjamesmulhern.com/#website"
-      },
-      "inLanguage": "en-US",
-      "mainEntityOfPage": {
-        "@id": "https://www.authorjamesmulhern.com/a-silver-current.html#webpage"
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
-<div id="scp-return-ribbon" style="background: #10182E; color: #F8F1DD; text-align: center; padding: 10px 16px; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.02em; border-bottom: 3px solid #6E4A0E; position: relative; z-index: 9999;">
-  <a href="https://salon.silvercurrentpress.com" style="color: #F8F1DD; text-decoration: none; display:inline-flex; align-items:center; gap:8px;" onmouseover="this.style.color='#F0D080'" onmouseout="this.style.color='#F8F1DD'">
-    <span style="font-size:16px; line-height:1;">&#8592;</span>
-    <span>Back to <strong style="color:#F0D080;">The 2601 Salon</strong></span>
-  </a>
-</div>
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a href="index.html" class="brand" aria-label="James Mulhern, home">
@@ -154,7 +101,7 @@
         <li><a href="greatest-short-stories.html">Great Stories</a></li>
         <li><a href="essays.html" aria-current="page">Essays</a></li>
       </ul></details></li>
-      <li class="nav-group"><details><summary>Read & Discuss</summary><ul>
+      <li class="nav-group"><details><summary>Read &amp; Discuss</summary><ul>
         <li><a href="book-club.html">Book Clubs</a></li>
         <li><a href="musings.html">Musings</a></li>
         <li><a href="philosophy-of-writing.html">Philosophy</a></li>
@@ -191,7 +138,6 @@
   <a href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg><span>Services</span></a>
   <a href="mailto:jamesfmulhern@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4Z"/><path d="M4 7l8 6 8-6"/></svg><span>Contact</span></a>
 </nav>
-
 <main>
 
     <section class="page-header">
