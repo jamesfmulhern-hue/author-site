@@ -4417,7 +4417,7 @@ hr,
    shrink via existing clamp()/media rules - only the line-break
    behavior is locked here.
    ============================================================ */
-h5, h6,
+h1, h2, h3, h4, h5, h6,
 .brand,
 .nav-links a,
 .btn,
@@ -4553,6 +4553,21 @@ h5, h6,
   .featured-book-info h3 {
     font-size: clamp(1rem, 4.8vw, 1.6rem);
     overflow-wrap: normal;
+    hyphens: none;
+  }
+}
+
+/* Essay and content-page titles are plain <h1> elements (not .hero-name or
+   .page-header h1). The base h1 clamp floor of 2.6rem (41.6px) plus the
+   0.04em letter-spacing makes a long single word like "Unquenchable" wider
+   than a phone column, and overflow-wrap: anywhere then slices it mid-word
+   ("UNQUENCHABL" / "E FIRE"). Scale the type down on phones so the longest
+   word fits on one line, and lock whole-word wrapping only. */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.7rem, 8.5vw, 2.6rem);
+    overflow-wrap: normal;
+    word-break: keep-all;
     hyphens: none;
   }
 }
