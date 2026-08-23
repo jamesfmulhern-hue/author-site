@@ -3097,6 +3097,10 @@ img[src*="images/hopper"] {
 }
 .contest-closed-mark { color: var(--color-gold); font-size: 1.1em; }
 .contest-closed-text { flex: 1; max-width: 60ch; }
+[data-theme="dark"] .contest-closed-banner {
+  background: #4a1216;
+  border-color: var(--color-oxblood);
+}
 
 /* ==========================================================================
    Form closed banner + disabled state
