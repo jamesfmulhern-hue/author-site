@@ -40,6 +40,7 @@ picture {
   --color-brass-bright: #a27c44;
   --color-brass-deep: #5f4620;
   --color-brass-soft: #d8c394;
+  --color-on-accent: #fffbf2;             /* text on gold/oxblood fills */
 
   /* Legacy aliases — 'gold' now means brass, 'maroon' means oxblood */
   --color-gold: var(--color-brass);
@@ -139,6 +140,7 @@ picture {
   --color-brass-bright: #ecc88a;
   --color-brass-deep: #b8884a;
   --color-brass-soft: #3a2f1c;
+  --color-on-accent: #2a324a;             /* text on gold fills in dark mode */
 
   --color-gold: var(--color-brass);
   --color-gold-bright: var(--color-brass-bright);
@@ -223,14 +225,14 @@ img, picture, svg, video { display: block; max-width: 100%; height: auto; }
 
 /* Unify the Hopper paintings as a single curated collection */
 img[src*="images/hopper/"] {
-  filter: sepia(0.06) saturate(0.94) contrast(1.02) brightness(1.12);
+  filter: sepia(0.04) saturate(0.95) contrast(1.0) brightness(1.18);
   transition: filter 500ms ease, box-shadow 500ms ease;
 }
 img[src*="images/hopper/"][loading="eager"] {
   animation: hopper-fade 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 [data-theme="dark"] img[src*="images/hopper/"] {
-  filter: sepia(0.06) saturate(0.9) brightness(1.0);
+  filter: sepia(0.04) saturate(0.92) brightness(1.05);
 }
 @keyframes hopper-fade {
   from { opacity: 0; transform: translateY(6px); }
@@ -694,10 +696,9 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .btn:hover {
   background: var(--color-gold);
-  color: #fffbf2;
+  color: var(--color-on-accent);
   letter-spacing: 0.32em;
 }
-[data-theme="dark"] .btn:hover { color: #2a324a; }
 
 .btn-ghost {
   border-color: var(--color-border);
@@ -852,7 +853,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   border-color: var(--color-gold);
   color: var(--color-text);
 }
-.hero-cta .btn:hover { background: var(--color-gold); color: #fffbf2; }
+.hero-cta .btn:hover { background: var(--color-gold); color: var(--color-on-accent); }
 
 .hero-image {
   position: relative;
@@ -3469,7 +3470,7 @@ img[src*="images/hopper"] {
   color: var(--color-text);
   padding-inline: var(--space-10);
 }
-.service-cta .btn:hover { background: var(--color-gold); color: #fffbf2; }
+.service-cta .btn:hover { background: var(--color-gold); color: var(--color-on-accent); }
 
 .service-card-press .service-list strong {
   color: var(--color-oxblood);
