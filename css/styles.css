@@ -223,14 +223,14 @@ img, picture, svg, video { display: block; max-width: 100%; height: auto; }
 
 /* Unify the Hopper paintings as a single curated collection */
 img[src*="images/hopper/"] {
-  filter: sepia(0.06) saturate(0.94) contrast(1.02);
+  filter: sepia(0.06) saturate(0.94) contrast(1.02) brightness(1.12);
   transition: filter 500ms ease, box-shadow 500ms ease;
 }
 img[src*="images/hopper/"][loading="eager"] {
   animation: hopper-fade 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 [data-theme="dark"] img[src*="images/hopper/"] {
-  filter: sepia(0.06) saturate(0.85) brightness(0.9);
+  filter: sepia(0.06) saturate(0.9) brightness(1.0);
 }
 @keyframes hopper-fade {
   from { opacity: 0; transform: translateY(6px); }
