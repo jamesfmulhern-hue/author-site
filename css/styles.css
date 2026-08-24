@@ -5155,3 +5155,54 @@ h1, h2, h3, h4, h5, h6,
 .site-notice-text a:hover {
   color: var(--color-brass-deep, #6b5128);
 }
+
+/* ==========================================================================
+   Art Deco flourishes — thin gold corner brackets, double keylines, sunburst
+   ========================================================================== */
+
+/* Double keyline frame on the page header (echoes the hero) */
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-6);
+  border: 1px solid var(--color-gold);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Subtle Art Deco sunburst behind the hero */
+.hero {
+  background:
+    repeating-conic-gradient(from 0deg at 50% -20%, rgba(176, 138, 62, 0.035) 0deg 6deg, transparent 6deg 12deg),
+    radial-gradient(ellipse at 50% 0%, var(--color-surface) 0%, var(--color-surface-2) 60%, var(--color-surface-offset) 100%);
+}
+
+/* Thin gold corner brackets on key panels */
+.readers-circle-panel,
+.motif-card {
+  position: relative;
+}
+.readers-circle-panel::before,
+.motif-card::before {
+  content: "";
+  position: absolute;
+  top: 8px; left: 8px;
+  width: 18px; height: 18px;
+  border-top: 1px solid var(--color-gold);
+  border-left: 1px solid var(--color-gold);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 1;
+}
+.readers-circle-panel::after,
+.motif-card::after {
+  content: "";
+  position: absolute;
+  bottom: 8px; right: 8px;
+  width: 18px; height: 18px;
+  border-bottom: 1px solid var(--color-gold);
+  border-right: 1px solid var(--color-gold);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 1;
+}
