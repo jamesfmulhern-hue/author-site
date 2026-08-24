@@ -5140,3 +5140,87 @@ h5, h6,
 .site-notice-text a:hover {
   color: var(--color-brass-deep, #6b5128);
 }
+
+/* ==========================================================================
+   New Art Deco ornaments — sunburst, stepped band, fan corners, hopper frame
+   Added to deepen the Art Deco identity while staying subordinate to text.
+   ========================================================================== */
+
+/* Framed "print" treatment for Hopper-style paintings: a parchment mat
+   with a gold hairline, echoing the book-cover deco frames. */
+.hopper-figure {
+  max-width: 100%;
+  margin: 0 0 var(--space-8, 2rem);
+  padding: clamp(6px, 1vw, 10px);
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--color-surface) 92%, var(--color-gold) 8%),
+    var(--color-surface));
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.hopper-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid color-mix(in oklab, var(--color-gold) 45%, transparent);
+}
+.hopper-figure figcaption {
+  font-family: var(--font-deco);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+  text-align: center;
+  font-style: italic;
+  margin-top: var(--space-3, 0.75rem);
+  padding-bottom: 2px;
+}
+
+/* Art Deco sunburst — radiating-ray fan with flanking rules and finials */
+.deco-sunburst {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-block: var(--space-8);
+  color: var(--color-gold);
+}
+.deco-sunburst::before,
+.deco-sunburst::after {
+  content: "";
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+.deco-sunburst svg {
+  width: 118px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+/* Art Deco stepped "ziggurat" band — thin geometric setback strip */
+.deco-band {
+  width: 100%;
+  height: 14px;
+  color: var(--color-gold);
+  opacity: 0.85;
+  line-height: 0;
+}
+.deco-band svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Art Deco fan corners — quarter-sunburst rays in each corner */
+.deco-fan-corners { position: absolute; inset: 0; pointer-events: none; }
+.deco-fan-corners svg {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  color: var(--color-gold);
+}
+.deco-fan-corners svg.tl { top: 0; left: 0; }
+.deco-fan-corners svg.tr { top: 0; right: 0; transform: scaleX(-1); }
+.deco-fan-corners svg.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.deco-fan-corners svg.br { bottom: 0; right: 0; transform: scale(-1, -1); }
