@@ -96,6 +96,7 @@
 .motif-detail {
   max-width: 760px;
   margin: 0 auto;
+  scroll-margin-top: 96px;
   padding: clamp(var(--space-6), 4vw, var(--space-10)) clamp(var(--space-6), 5vw, var(--space-12));
   border: 1px solid var(--color-divider);
   background: var(--color-surface);
@@ -323,13 +324,18 @@
     {
       id: 'threshold',
       name: 'The Threshold',
-      essence: 'Doorways, hallways, crosswalks, windows \u2014 the important moments happen at edges, between one condition and another.',
+      essence: 'Doorways, hallways, crosswalks, windows — the important moments happen at edges, between one condition and another.',
       icon: 'threshold',
       recurrences: [
-        { quote: 'My father stands in the doorway. \u201cEverything copacetic?\u201d he says.', source: '\u201cCopacetic\u201d' },
-        { quote: 'in the dark hallway of your Boston home, just off the sunny kitchen', source: '\u201cDark City\u201d' },
-        { quote: 'Today, I saw a father and son step onto the crosswalk. I braked and watched them pass\u2014', source: '\u201cThe Crosswalk\u201d' },
-        { quote: 'She looked out the window and sighed.', source: '\u201cShoes\u201d' }
+        { quote: 'My father stands in the doorway. “Everything copacetic?” he says.', source: '“Copacetic”' },
+        { quote: 'in the dark hallway of your Boston home, just off the sunny kitchen', source: '“Dark City”' },
+        { quote: 'Today, I saw a father and son step onto the crosswalk. I braked and watched them pass—', source: '“The Crosswalk”' },
+        { quote: 'She looked out the window and sighed.', source: '“Shoes”' },
+        { quote: 'Dad—You stood in doorways asking if everything was copacetic.', source: '“Dedication”' },
+        { quote: 'then walked down the shellacked hallway', source: '“Dark City”' },
+        { quote: 'When she stared at the door, I carried her outside.', source: '“Moving Forward”' },
+        { quote: 'Through the living room windows—trees and sky.', source: '“Session’s End”' },
+        { quote: 'the robins’ nest in the maple outside your bedroom window', source: '“The Nest”' },
       ]
     },
     {
@@ -338,9 +344,14 @@
       essence: 'What passes between people passes through touch rather than speech.',
       icon: 'hand',
       recurrences: [
-        { quote: 'Your hands on my shoulders. One moment, framed.', source: '\u201cThe Crosswalk\u201d' },
-        { quote: 'He bends, cupping his hands toward the lake below', source: '\u201cWater\u201d' },
-        { quote: 'Her fingers trace the shape of my face.', source: '\u201cMoving Forward\u201d' }
+        { quote: 'Your hands on my shoulders. One moment, framed.', source: '“The Crosswalk”' },
+        { quote: 'He bends, cupping his hands toward the lake below', source: '“Water”' },
+        { quote: 'Her fingers trace the shape of my face.', source: '“Moving Forward”' },
+        { quote: 'the warmth of your arm around my shoulder was as comforting as your protective spirit', source: '“Dedication”' },
+        { quote: 'you rubbed my head', source: '“Dark City”' },
+        { quote: 'Your fingers touch the contours of my face.', source: '“Dedication”' },
+        { quote: 'lifting our Budweisers with gloved hands', source: '“Brother Mark”' },
+        { quote: 'you press your palm on a page you’re not reading', source: '“Simply Silly”' },
       ]
     },
     {
@@ -349,10 +360,14 @@
       essence: 'The body is a landscape, and landscapes dry.',
       icon: 'water',
       recurrences: [
-        { quote: 'capillaries like tributaries on dry land', source: '\u201cWater\u201d' },
-        { quote: 'skin rippled like water', source: '\u201cWater\u201d' },
-        { quote: 'He bends, cupping his hands toward the lake below, reaching for water that will not rise.', source: '\u201cWater\u201d' },
-        { quote: 'A woman put dishes in the sink and ran water', source: '\u201cCatherine\u201d' }
+        { quote: 'capillaries like tributaries on dry land', source: '“Water”' },
+        { quote: 'skin rippled like water', source: '“Water”' },
+        { quote: 'He bends, cupping his hands toward the lake below, reaching for water that will not rise.', source: '“Water”' },
+        { quote: 'A woman put dishes in the sink and ran water', source: '“Catherine”' },
+        { quote: 'A girl waded in the ocean not far from the shore.', source: '“Catherine”' },
+        { quote: 'we loved to watch waves crash on the soft, pebbled shore', source: '“Carol”' },
+        { quote: 'Now, I wade in different waters— a more pacific stage of life.', source: '“Mostly I Sit”' },
+        { quote: 'walked a mile to a well', source: '“Fragility”' },
       ]
     },
     {
@@ -361,9 +376,12 @@
       essence: 'Light is given a source and an angle rather than a meaning.',
       icon: 'light',
       recurrences: [
-        { quote: 'blue eyes lit by a slant of kitchen sun', source: '\u201cDark City\u201d' },
-        { quote: 'I sat by him until shadows crossed his face.', source: '\u201cCopacetic\u201d' },
-        { quote: 'Sunlight glimmered through the red cedar lattice above us, dappling her face.', source: '\u201cArise and Go Now\u201d' }
+        { quote: 'blue eyes lit by a slant of kitchen sun', source: '“Dark City”' },
+        { quote: 'I sat by him until shadows crossed his face.', source: '“Copacetic”' },
+        { quote: 'Sunlight glimmered through the red cedar lattice above us, dappling her face.', source: '“Arise and Go Now”' },
+        { quote: 'the play of light— red, gold, and green illuminations', source: '“The Guard”' },
+        { quote: 'Streetlights flashed on icy rails', source: '“Brother Mark”' },
+        { quote: 'Your flashlight showed not a speck of leaf', source: '“Leaves”' },
       ]
     },
     {
@@ -372,10 +390,15 @@
       essence: 'An ordinary container whose value is entirely a function of what it has been near.',
       icon: 'object',
       recurrences: [
-        { quote: 'Do you have the yellow teapot?', source: '\u201cThe Teapot\u201d' },
-        { quote: 'We had to wear the shoes she brought home. They were often small.', source: '\u201cShoes\u201d' },
-        { quote: 'His robe, folded, on the table by the door.', source: '\u201cCopacetic\u201d' },
-        { quote: 'the cheap print of The Last Supper lay on the floor, its frame splintered', source: '\u201cLast Supper\u201d' }
+        { quote: 'Do you have the yellow teapot?', source: '“The Teapot”' },
+        { quote: 'We had to wear the shoes she brought home. They were often small.', source: '“Shoes”' },
+        { quote: 'His robe, folded, on the table by the door.', source: '“Copacetic”' },
+        { quote: 'the cheap print of The Last Supper lay on the floor, its frame splintered', source: '“Last Supper”' },
+        { quote: 'your rosary and Daily Missal that sit on my desk', source: '“Dedication”' },
+        { quote: 'the avocado-green rotary phone and its coiled cord', source: '“Please Call Me”' },
+        { quote: 'the Jell-O quivered on the spoon', source: '“Copacetic”' },
+        { quote: 'a honeymoon picture on the table', source: '“Honeymoon”' },
+        { quote: 'I bought diapers that sagged and slipped off', source: '“Moving Forward”' },
       ]
     },
     {
@@ -384,8 +407,13 @@
       essence: 'Insufficient words may still be sufficient feeling.',
       icon: 'question',
       recurrences: [
-        { quote: 'Everything copacetic?', source: '\u201cCopacetic\u201d' },
-        { quote: 'It wasn\u2019t always, but your asking made it so.', source: '\u201cDedication\u201d' }
+        { quote: 'Everything copacetic?', source: '“Copacetic”' },
+        { quote: 'It wasn’t always, but your asking made it so.', source: '“Dedication”' },
+        { quote: 'I wondered what you prayed for... What secrets did you know?', source: '“Brother Mike”' },
+        { quote: 'What does Jesus say to her? Thank you, I suppose.', source: '“The Guard”' },
+        { quote: 'My mother asks if I’m happy. I hesitate, then lie: “All is good.”', source: '“Epilogue”' },
+        { quote: 'Why never the swings?', source: '“The Crosswalk”' },
+        { quote: 'When will you be retiring?', source: '“Turbulence”' },
       ]
     },
     {
@@ -394,10 +422,12 @@
       essence: 'A single scriptural phrase for damnation becomes the shimmer over a baptism.',
       icon: 'fire',
       recurrences: [
-        { quote: 'The waves beyond glimmered like sparks from an unquenchable fire.', source: '\u201cAssumptions\u201d' },
-        { quote: 'Your arm on my shoulder, your face orange from flames.', source: '\u201cBrother Mark\u201d' }
+        { quote: 'The waves beyond glimmered like sparks from an unquenchable fire.', source: '“Assumptions”' },
+        { quote: 'Your arm on my shoulder, your face orange from flames.', source: '“Brother Mark”' },
+        { quote: 'we built a fire on tracks beneath the bridge', source: '“Brother Mark”' },
+        { quote: 'a few fire-warmed bricks', source: '“Fragility”' },
       ]
-    }
+    },
   ];
 
   var icons = {
@@ -417,7 +447,7 @@
   var grid = document.getElementById('motif-grid');
   var detail = document.getElementById('motif-detail');
 
-  function select(i) {
+  function select(i, shouldScroll) {
     var m = motifs[i];
     var cards = grid.querySelectorAll('.motif-card');
     for (var j = 0; j < cards.length; j++) {
@@ -434,6 +464,9 @@
       html += '<figure class="motif-quote"><p>&ldquo;' + r.quote + '&rdquo;</p><figcaption class="motif-source">' + r.source + '</figcaption></figure>';
     }
     detail.innerHTML = html;
+    if (shouldScroll && detail.scrollIntoView) {
+      detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   for (var i = 0; i < motifs.length; i++) {
@@ -448,7 +481,7 @@
         '<span class="motif-name">' + m.name + '</span>' +
         '<span class="motif-essence">' + m.essence + '</span>' +
         '<span class="motif-count">' + m.recurrences.length + ' appearances</span>';
-      btn.addEventListener('click', function () { select(idx); });
+      btn.addEventListener('click', function () { select(idx, true); });
       grid.appendChild(btn);
     })(i);
   }
