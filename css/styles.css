@@ -203,6 +203,11 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-20);
+  /* Hard-stop any horizontal scroll at the document root. `clip` (rather than
+     `hidden`) suppresses the scroll container entirely, which is the reliable
+     fix for iOS Safari letting wide content push the page sideways. */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -5155,6 +5160,14 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 640px) {
   .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
   .readers-circle-hero .btn { width: 100%; justify-content: center; }
+  /* Phone overflow guard: the panel and its button must never push the page
+     wider than the viewport. Drop the 220px text floor, let the button copy
+     wrap instead of forcing a single nowrap line, and allow long words to
+     break so nothing is clipped on the right edge. */
+  .readers-circle-hero-text { min-width: 0; }
+  .readers-circle-hero .btn { white-space: normal; letter-spacing: 0.18em; }
+  .readers-circle-hero-label,
+  .readers-circle-hero-text p { overflow-wrap: break-word; }
 }
 
 /* Two-column hero range: the text column narrows enough that the button
@@ -5162,6 +5175,8 @@ h1, h2, h3, h4, h5, h6,
 @media (min-width: 641px) and (max-width: 1050px) {
   .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
   .readers-circle-hero .btn { width: 100%; justify-content: center; }
+  .readers-circle-hero-text { min-width: 0; }
+  .readers-circle-hero .btn { white-space: normal; }
 }
 
 /* ==========================================================================
