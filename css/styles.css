@@ -3965,8 +3965,12 @@ hr,
     padding-inline: var(--space-5) !important;
   }
 
-  /* Page headers — reduce huge clamp values so titles don't wrap weirdly */
-  .page-header h1, .page-header h2 { font-size: clamp(2rem, 9vw, 2.8rem) !important; }
+  /* Page headers — reduce huge clamp values so titles don't wrap weirdly.
+     "Books & Collections" was clipping on phones: "COLLECTIONS" is a single
+     unbreakable word (word-break: keep-all) and at 9vw + 0.06em tracking it
+     ran wider than the column, then .page-header's overflow:hidden cut it off.
+     Drop the clamp floor/ceiling and tighten tracking so the longest word fits. */
+  .page-header h1, .page-header h2 { font-size: clamp(1.6rem, 7.5vw, 2.5rem) !important; letter-spacing: 0.03em !important; }
 
   /* Footer — center and let it breathe */
   .footer-inner { padding-inline: var(--space-4); }
