@@ -5290,7 +5290,11 @@ h1, h2, h3, h4, h5, h6,
   z-index: 0;
 }
 .hero-sunburst svg { width: 100%; height: 100%; display: block; }
-.hero-text > * { position: relative; z-index: 1; }
+/* Lift the title, chip, role, tagline, CTA and Reader's Circle above the
+   sunburst — but leave the sunburst itself absolutely positioned so it
+   stays a faint backdrop instead of pushing the title down and opening a
+   large empty gap at the top of the hero. */
+.hero-text > *:not(.hero-sunburst) { position: relative; z-index: 1; }
 
 /* Subtle Greek-key (meander) border strip */
 .deco-meander {
