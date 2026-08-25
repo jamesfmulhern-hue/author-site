@@ -3074,7 +3074,6 @@ img[src*="images/hopper"] {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-oxblood);
-  transform: rotate(-2deg);
   background: color-mix(in oklab, var(--color-oxblood) 5%, var(--color-surface));
   box-shadow: 0 2px 6px rgba(107,31,36,0.15);
 }
