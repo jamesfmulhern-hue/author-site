@@ -20,8 +20,8 @@ GUIDES = {
 
 UPGRADE_TEMPLATE = (
     '\n            <div class="guide-card-upgrade">'
-    '<a href="https://payhip.com/b/{key}" class="payhip-buy-button" data-theme="none">'
-    'Support the work &mdash; buy this PDF for ${price} &rarr;</a></div>'
+    '<span class="guide-card-upgrade-note">A typeset PDF edition (${price}) is on its way to the store.</span> '
+    '<a href="https://payhip.com/b/{key}" class="payhip-buy-button" data-theme="none">Notify Me &rarr;</a></div>'
 )
 
 html = open(PATH, "r", encoding="utf-8").read()
