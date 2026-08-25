@@ -5275,7 +5275,9 @@ h1, h2, h3, h4, h5, h6,
    Follow-up ornaments — hero sunburst watermark, Greek-key meander border
    ========================================================================== */
 
-/* Very low-opacity sunburst watermark behind the hero name */
+/* Sunburst watermark behind the hero name — visible in both light and dark
+   themes. Opacity is raised from the earlier near-invisible 0.12 so the
+   radiating-ray fan reads clearly while still sitting behind the title. */
 .hero-text { position: relative; }
 .hero-sunburst {
   position: absolute;
@@ -5285,7 +5287,7 @@ h1, h2, h3, h4, h5, h6,
   width: min(430px, 94%);
   height: 240px;
   color: var(--color-gold);
-  opacity: 0.12;
+  opacity: 0.42;
   pointer-events: none;
   z-index: 0;
 }
