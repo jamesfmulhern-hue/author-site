@@ -203,6 +203,11 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-20);
+  /* Hard-stop any horizontal scroll at the document root. `clip` (rather than
+     `hidden`) suppresses the scroll container entirely, which is the reliable
+     fix for iOS Safari letting wide content push the page sideways. */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -3069,7 +3074,6 @@ img[src*="images/hopper"] {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-oxblood);
-  transform: rotate(-2deg);
   background: color-mix(in oklab, var(--color-oxblood) 5%, var(--color-surface));
   box-shadow: 0 2px 6px rgba(107,31,36,0.15);
 }
@@ -3965,8 +3969,12 @@ hr,
     padding-inline: var(--space-5) !important;
   }
 
-  /* Page headers — reduce huge clamp values so titles don't wrap weirdly */
-  .page-header h1, .page-header h2 { font-size: clamp(2rem, 9vw, 2.8rem) !important; }
+  /* Page headers — reduce huge clamp values so titles don't wrap weirdly.
+     "Books & Collections" was clipping on phones: "COLLECTIONS" is a single
+     unbreakable word (word-break: keep-all) and at 9vw + 0.06em tracking it
+     ran wider than the column, then .page-header's overflow:hidden cut it off.
+     Drop the clamp floor/ceiling and tighten tracking so the longest word fits. */
+  .page-header h1, .page-header h2 { font-size: clamp(1.6rem, 7.5vw, 2.5rem) !important; letter-spacing: 0.03em !important; }
 
   /* Footer — center and let it breathe */
   .footer-inner { padding-inline: var(--space-4); }
@@ -4257,6 +4265,37 @@ hr,
 }
 
 /* ============================================================
+   MOBILE WORDMARK - KEEP ON ONE LINE
+   ------------------------------------------------------------
+   Below 1360px the menu collapses to the toggle, but the wordmark
+   was still free to wrap letter-by-letter down the left edge
+   ("J A M E S ..."), which made the sticky header tall enough to
+   cover the reading area. Hold it on one line, stop the brand
+   shrinking, and ease the tracking so "JAMES MULHERN" fits a
+   phone column beside the action buttons.
+   ============================================================ */
+@media (max-width: 1360px) {
+  .brand {
+    flex-shrink: 0;
+    min-width: 0;
+    gap: var(--space-2);
+  }
+  .brand span {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* Very narrow phones: drop the search toggle so the wordmark keeps room.
+   (Search stays available from 375px up and on tablet/desktop.) */
+@media (max-width: 360px) {
+  .search-toggle {
+    display: none;
+  }
+}
+
+/* ============================================================
    ESSAY / GUIDE PAID-DOWNLOAD BOX (Payhip)
    ------------------------------------------------------------
    A quiet purchase box for a typeset PDF edition of an essay
@@ -4316,6 +4355,16 @@ hr,
   margin-top: var(--space-2);
   padding-top: var(--space-2);
   border-top: 1px dashed var(--color-divider);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.guide-card-upgrade-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
 .guide-card-upgrade a.payhip-buy-button {
   font-family: var(--font-ui);
@@ -5110,6 +5159,14 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 640px) {
   .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
   .readers-circle-hero .btn { width: 100%; justify-content: center; }
+  /* Phone overflow guard: the panel and its button must never push the page
+     wider than the viewport. Drop the 220px text floor, let the button copy
+     wrap instead of forcing a single nowrap line, and allow long words to
+     break so nothing is clipped on the right edge. */
+  .readers-circle-hero-text { min-width: 0; }
+  .readers-circle-hero .btn { white-space: normal; letter-spacing: 0.18em; }
+  .readers-circle-hero-label,
+  .readers-circle-hero-text p { overflow-wrap: break-word; }
 }
 
 /* Two-column hero range: the text column narrows enough that the button
@@ -5117,6 +5174,8 @@ h1, h2, h3, h4, h5, h6,
 @media (min-width: 641px) and (max-width: 1050px) {
   .readers-circle-hero { flex-direction: column; align-items: stretch; text-align: center; }
   .readers-circle-hero .btn { width: 100%; justify-content: center; }
+  .readers-circle-hero-text { min-width: 0; }
+  .readers-circle-hero .btn { white-space: normal; }
 }
 
 /* ==========================================================================
@@ -5244,7 +5303,9 @@ h1, h2, h3, h4, h5, h6,
    Follow-up ornaments — hero sunburst watermark, Greek-key meander border
    ========================================================================== */
 
-/* Very low-opacity sunburst watermark behind the hero name */
+/* Sunburst watermark behind the hero name — visible in both light and dark
+   themes. Opacity is raised from the earlier near-invisible 0.12 so the
+   radiating-ray fan reads clearly while still sitting behind the title. */
 .hero-text { position: relative; }
 .hero-sunburst {
   position: absolute;
@@ -5254,12 +5315,16 @@ h1, h2, h3, h4, h5, h6,
   width: min(430px, 94%);
   height: 240px;
   color: var(--color-gold);
-  opacity: 0.12;
+  opacity: 0.42;
   pointer-events: none;
   z-index: 0;
 }
 .hero-sunburst svg { width: 100%; height: 100%; display: block; }
-.hero-text > * { position: relative; z-index: 1; }
+/* Lift the title, chip, role, tagline, CTA and Reader's Circle above the
+   sunburst — but leave the sunburst itself absolutely positioned so it
+   stays a faint backdrop instead of pushing the title down and opening a
+   large empty gap at the top of the hero. */
+.hero-text > *:not(.hero-sunburst) { position: relative; z-index: 1; }
 
 /* Subtle Greek-key (meander) border strip */
 .deco-meander {
