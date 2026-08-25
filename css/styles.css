@@ -4257,6 +4257,37 @@ hr,
 }
 
 /* ============================================================
+   MOBILE WORDMARK - KEEP ON ONE LINE
+   ------------------------------------------------------------
+   Below 1360px the menu collapses to the toggle, but the wordmark
+   was still free to wrap letter-by-letter down the left edge
+   ("J A M E S ..."), which made the sticky header tall enough to
+   cover the reading area. Hold it on one line, stop the brand
+   shrinking, and ease the tracking so "JAMES MULHERN" fits a
+   phone column beside the action buttons.
+   ============================================================ */
+@media (max-width: 1360px) {
+  .brand {
+    flex-shrink: 0;
+    min-width: 0;
+    gap: var(--space-2);
+  }
+  .brand span {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* Very narrow phones: drop the search toggle so the wordmark keeps room.
+   (Search stays available from 375px up and on tablet/desktop.) */
+@media (max-width: 360px) {
+  .search-toggle {
+    display: none;
+  }
+}
+
+/* ============================================================
    ESSAY / GUIDE PAID-DOWNLOAD BOX (Payhip)
    ------------------------------------------------------------
    A quiet purchase box for a typeset PDF edition of an essay
