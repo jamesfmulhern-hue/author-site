@@ -1454,7 +1454,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: clamp(var(--space-8), 4vw, var(--space-12));
 }
 
@@ -1600,7 +1600,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .credentials {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: var(--space-8);
   margin-top: var(--space-12);
 }
@@ -1652,7 +1652,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .teaching-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: var(--space-8);
   margin-top: var(--space-10);
   list-style: none;
@@ -1887,7 +1887,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 
 .praise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: var(--space-8);
   margin-top: var(--space-10);
 }
@@ -1971,7 +1971,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 }
 .influences-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: var(--space-8);
   margin-top: var(--space-8);
   position: relative;
@@ -1994,6 +1994,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   color: var(--color-oxblood);
   margin-bottom: var(--space-2);
   overflow-wrap: break-word;
+  min-width: 0;
   max-width: 100%;
 }
 .influence dd {
@@ -2003,6 +2004,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   color: var(--color-text-muted);
   line-height: 1.55;
   overflow-wrap: break-word;
+  min-width: 0;
   max-width: 100%;
 }
 
@@ -2031,7 +2033,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 .anthology-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: var(--space-4) var(--space-8);
   margin-top: var(--space-8);
 }
@@ -2069,7 +2071,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 .cover-thumb-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(140px, 100%), 1fr));
   gap: var(--space-6) var(--space-4);
   margin-top: var(--space-8);
 }
@@ -2283,7 +2285,7 @@ p { text-wrap: pretty; max-width: 68ch; }
 /* Read-more list */
 .read-more-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: var(--space-6);
   margin-top: var(--space-8);
 }
