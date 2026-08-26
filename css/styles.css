@@ -4642,6 +4642,13 @@ h1, h2, h3, h4, h5, h6,
 }
 .search-overlay.open { display: flex; }
 
+/* Hide the "Back to …" return ribbon while the search overlay is open so the
+   bar never overlaps or obscures the search input on phone-width screens. */
+body.search-open #scp-return-ribbon,
+body.search-open #mulhern-return-ribbon {
+  display: none;
+}
+
 .search-modal {
   width: 100%;
   max-width: 640px;
