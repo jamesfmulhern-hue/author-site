@@ -173,6 +173,7 @@
     if (!overlay) buildOverlay();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('search-open');
     loadIndex().catch(() => {});
     window.setTimeout(() => input.focus(), 30);
   }
@@ -181,6 +182,7 @@
     if (!overlay) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    document.body.classList.remove('search-open');
   }
 
   toggleButtons.forEach((btn) => btn.addEventListener('click', openSearch));
