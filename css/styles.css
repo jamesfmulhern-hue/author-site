@@ -815,6 +815,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   line-height: 1.05;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-align: center;
   color: var(--color-oxblood);   /* MAROON */
   margin: 0 0 clamp(var(--space-8), 3vw, var(--space-12));
 }
