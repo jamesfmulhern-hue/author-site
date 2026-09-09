@@ -3973,11 +3973,12 @@ hr,
   }
 
   /* Page headers — reduce huge clamp values so titles don't wrap weirdly.
-     "Books & Collections" was clipping on phones: "COLLECTIONS" is a single
-     unbreakable word (word-break: keep-all) and at 9vw + 0.06em tracking it
-     ran wider than the column, then .page-header's overflow:hidden cut it off.
-     Drop the clamp floor/ceiling and tighten tracking so the longest word fits. */
-  .page-header h1, .page-header h2 { font-size: clamp(1.6rem, 7.5vw, 2.5rem) !important; letter-spacing: 0.03em !important; }
+     Single unbreakable words ("COLLECTIONS", "TRANSCENDENTALISM") set the
+     ceiling: at 7.5vw + 0.03em tracking the 17-letter "TRANSCENDENTALISM"
+     (~12.2em in Cinzel caps) overran the keyline frame on a 393px iPhone and
+     crossed the gold borders. Drop the clamp floor/ceiling and tracking just
+     enough that the longest word sits inside the frame at 320–440px. */
+  .page-header h1, .page-header h2 { font-size: clamp(1.3rem, 6.75vw, 2.5rem) !important; letter-spacing: 0.02em !important; }
 
   /* Footer — center and let it breathe */
   .footer-inner { padding-inline: var(--space-4); }
