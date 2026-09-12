@@ -2265,6 +2265,7 @@ p { text-wrap: pretty; max-width: 68ch; }
   margin-bottom: var(--space-3);
   display: block;
 }
+.editors-note h2,
 .editors-note h3 {
   font-family: var(--font-deco);
   font-weight: 400;
