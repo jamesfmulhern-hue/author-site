@@ -5378,11 +5378,9 @@ body.search-open #mulhern-return-ribbon {
 }
 
 /* Thin gold corner brackets on key panels */
-.readers-circle-panel,
 .motif-card {
   position: relative;
 }
-.readers-circle-panel::before,
 .motif-card::before {
   content: "";
   position: absolute;
@@ -5394,7 +5392,6 @@ body.search-open #mulhern-return-ribbon {
   pointer-events: none;
   z-index: 1;
 }
-.readers-circle-panel::after,
 .motif-card::after {
   content: "";
   position: absolute;
