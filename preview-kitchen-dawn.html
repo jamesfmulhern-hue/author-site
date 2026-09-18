@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kitchen Dawn — Visual Preview</title>
+  <style>
+    :root { --ink:#101a28; --night:#172638; --paper:#eee4cf; --gold:#b99759; --muted:#91a0ad; --amber:#d8a751; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--paper); background:radial-gradient(circle at 80% 0%,#31475d 0,transparent 35%),linear-gradient(145deg,#0b1420,#172638 58%,#111a25); font-family:Georgia,serif; }
+    .wrap { width:min(1120px,92vw); margin:auto; padding:42px 0 64px; }
+    header { display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--gold); border-bottom:1px solid var(--gold); padding:15px 0; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--muted); }
+    .monogram { color:var(--gold); font-size:1.25rem; letter-spacing:.24em; }
+    main { padding-top:54px; }
+    .kicker { text-align:center; color:var(--gold); font: .78rem Arial,sans-serif; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { max-width:780px; margin:16px auto 14px; text-align:center; font-size:clamp(2.4rem,6vw,5.5rem); line-height:.96; font-weight:normal; }
+    .dek { max-width:650px; margin:0 auto 38px; text-align:center; color:#cbd1d1; font-size:1.08rem; line-height:1.65; }
+    .frame { position:relative; padding:16px; border:1px solid var(--gold); background:#0e1824; box-shadow:0 28px 70px rgba(0,0,0,.4); }
+    .frame:before,.frame:after { content:"◆"; position:absolute; color:var(--gold); background:#0e1824; padding:0 7px; }
+    .frame:before { top:-11px; left:50%; transform:translateX(-50%); }
+    .frame:after { bottom:-11px; left:50%; transform:translateX(-50%); }
+    .scene { position:relative; min-height:500px; overflow:hidden; background:linear-gradient(120deg,rgba(19,37,57,.95),rgba(36,46,61,.72)),url('images/writer-at-desk.webp') center/cover; }
+    .scene:after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(7,15,25,.78),transparent 60%),linear-gradient(0deg,rgba(8,13,20,.38),transparent 50%); }
+    .copy { position:absolute; z-index:1; left:clamp(26px,6vw,72px); bottom:clamp(28px,6vw,72px); width:min(510px,78%); }
+    .copy h2 { margin:0 0 12px; color:#f1dfb5; font-size:clamp(2rem,4vw,3.8rem); font-weight:normal; line-height:1; }
+    .copy p { margin:0; max-width:440px; font-size:1.08rem; line-height:1.65; color:#e1e0d9; }
+    .note { margin:27px auto 0; max-width:730px; color:#aeb9c1; text-align:center; line-height:1.6; }
+    footer { margin-top:55px; border-top:1px solid rgba(185,151,89,.6); padding-top:18px; text-align:center; color:#8d9cab; font:.72rem Arial,sans-serif; letter-spacing:.11em; text-transform:uppercase; }
+    @media (max-width:620px) { .wrap{padding-top:22px}.scene{min-height:420px}header span:last-child{display:none} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><span class="monogram">JFM</span><span>Kitchen Dawn · Visual Preview</span><span>Preview Only</span></header>
+    <main>
+      <p class="kicker">An image-placement study</p>
+      <h1>The Slant of Kitchen Sun</h1>
+      <p class="dek">A mid-tone visual study: blue-grey dawn, a pool of lamplight, and ordinary objects held in a quiet domestic frame.</p>
+      <section class="frame" aria-label="Kitchen-dawn visual treatment">
+        <div class="scene">
+          <div class="copy">
+            <h2>Before the house wakes</h2>
+            <p>Coffee, a folded letter, the small gravity of a table: warmth remains legible against the site’s night palette.</p>
+          </div>
+        </div>
+      </section>
+      <p class="note">This is a standalone placement and tonal preview. It uses the existing author-site desk imagery as a temporary visual stand-in and does not modify any production page.</p>
+    </main>
+    <footer>James F. Mulhern · Standalone design study</footer>
+  </div>
+</body>
+</html>
