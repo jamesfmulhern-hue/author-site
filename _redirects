@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects
+# The old "crossings" landing page was consolidated into crossings-collection.html.
+# Redirect both the .html and clean-URL forms so old links and bookmarks still resolve.
+/crossings.html  /crossings-collection.html  301
+/crossings  /crossings-collection.html  301
