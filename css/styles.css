@@ -5403,3 +5403,74 @@ body.search-open #mulhern-return-ribbon {
   pointer-events: none;
   z-index: 1;
 }
+
+
+/* ==========================================================================
+   Reading soundtrack — "Listen while you read"
+   ========================================================================== */
+.soundtrack {
+  position: relative;
+  z-index: 1;
+  margin: var(--space-5, 1.25rem) 0 0;
+}
+.soundtrack .container-narrow {
+  display: flex;
+  justify-content: center;
+}
+.soundtrack-card {
+  min-width: min(100%, 340px);
+  border: 1px solid var(--color-divider, #b8a47a);
+  border-radius: var(--radius-md, 4px);
+  background: var(--color-surface, #fbf5e3);
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+}
+.soundtrack-summary {
+  font-family: var(--font-deco, "Marcellus SC", serif);
+  font-size: var(--text-sm, 1rem);
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted, #4a3d2a);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+  transition: color var(--transition-interactive, 220ms ease);
+}
+.soundtrack-summary::-webkit-details-marker { display: none; }
+.soundtrack-summary:hover,
+.soundtrack-summary:focus-visible {
+  color: var(--color-oxblood-bright, #8a2d32);
+}
+[data-theme="dark"] .soundtrack-summary:hover,
+[data-theme="dark"] .soundtrack-summary:focus-visible {
+  color: var(--color-gold-bright, #a27c44);
+}
+.snd-note {
+  color: var(--color-oxblood, #6b1f24);
+  font-family: var(--font-body, "EB Garamond", serif);
+  font-size: 1.05em;
+  line-height: 1;
+}
+[data-theme="dark"] .snd-note { color: var(--color-gold-bright, #a27c44); }
+.snd-play {
+  margin-left: auto;
+  color: var(--color-text-faint, #8a7e6a);
+  font-size: 0.85em;
+  transition: transform var(--transition-interactive, 220ms ease);
+}
+.soundtrack-card[open] .snd-play { transform: rotate(90deg); }
+.soundtrack-body {
+  margin-top: var(--space-3, 0.75rem);
+}
+.soundtrack-body audio {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+}
+.soundtrack-note {
+  font-family: var(--font-body, "EB Garamond", serif);
+  font-size: var(--text-sm, 1rem);
+  font-style: italic;
+  color: var(--color-text-faint, #8a7e6a);
+  margin: var(--space-2, 0.5rem) 0 0;
+}
