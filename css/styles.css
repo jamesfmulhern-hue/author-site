@@ -2283,6 +2283,14 @@ p { text-wrap: pretty; max-width: 68ch; }
   max-width: none;
 }
 .editors-note p + p { margin-top: var(--space-3); }
+.editors-note a {
+  color: var(--color-oxblood);
+  border-bottom: 1px dotted var(--color-divider);
+}
+.editors-note a:hover {
+  color: var(--color-forest);
+  border-bottom-color: var(--color-forest);
+}
 
 /* Read-more list */
 .read-more-grid {
@@ -2290,6 +2298,9 @@ p { text-wrap: pretty; max-width: 68ch; }
   grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: var(--space-6);
   margin-top: var(--space-8);
+}
+.read-more-grid--doors {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }
 .read-more-card {
   background: var(--color-surface);
@@ -2327,6 +2338,9 @@ p { text-wrap: pretty; max-width: 68ch; }
   color: var(--color-oxblood);
   border-bottom: 1px solid var(--color-oxblood);
   padding-bottom: 2px;
+  display: inline-block;
+  margin-top: var(--space-2);
+  margin-right: var(--space-4);
 }
 .read-more-card a:hover {
   color: var(--color-forest);
