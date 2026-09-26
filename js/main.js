@@ -73,3 +73,95 @@
     });
   });
 })();
+
+// Skip link: lets keyboard and screen-reader visitors jump past the menu.
+(() => {
+  const main = document.querySelector('main');
+  if (!main || document.querySelector('.skip-link')) return;
+  if (!main.id) main.id = 'main-content';
+  main.setAttribute('tabindex', '-1');
+  const link = document.createElement('a');
+  link.className = 'skip-link';
+  link.href = '#' + main.id;
+  link.textContent = 'Skip to content';
+  document.body.insertBefore(link, document.body.firstChild);
+})();
+
+// "Cite this page": copy-ready MLA and Chicago citations on essay and
+// study pages (any page whose structured data declares an Article).
+// Authorship is deliberately left unstated; the site is the container.
+(() => {
+  const main = document.querySelector('main');
+  if (!main) return;
+  let isArticle = false;
+  document.querySelectorAll('script[type="application/ld+json"]').forEach((node) => {
+    if (/"@type"\s*:\s*"Article"/.test(node.textContent)) isArticle = true;
+  });
+  if (!isArticle) return;
+
+  const h1 = document.querySelector('main h1');
+  if (!h1) return;
+  const title = h1.textContent.replace(/\s+/g, ' ').trim();
+  const canonical = document.querySelector('link[rel="canonical"]');
+  const url = canonical ? canonical.href : window.location.href.split('#')[0];
+  const bareUrl = url.replace(/^https?:\/\//, '');
+
+  const now = new Date();
+  const mlaMonths = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+  const fullMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const mlaDate = `${now.getDate()} ${mlaMonths[now.getMonth()]} ${now.getFullYear()}`;
+  const chiDate = `${fullMonths[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  const endPunct = /[?!.]$/.test(title) ? '' : '.';
+
+  const styles = [
+    {
+      name: 'MLA',
+      html: `&ldquo;${title}${endPunct}&rdquo; <em>AuthorJamesMulhern.com</em>, Silver Current Press, ${bareUrl}. Accessed ${mlaDate}.`,
+      text: `\u201C${title}${endPunct}\u201D AuthorJamesMulhern.com, Silver Current Press, ${bareUrl}. Accessed ${mlaDate}.`,
+    },
+    {
+      name: 'Chicago',
+      html: `&ldquo;${title}${endPunct}&rdquo; <em>AuthorJamesMulhern.com</em>. Silver Current Press. Accessed ${chiDate}. ${url}.`,
+      text: `\u201C${title}${endPunct}\u201D AuthorJamesMulhern.com. Silver Current Press. Accessed ${chiDate}. ${url}.`,
+    },
+  ];
+
+  const section = document.createElement('section');
+  section.className = 'cite-this';
+  section.setAttribute('aria-label', 'Cite this page');
+  section.innerHTML = `
+    <div class="container container-narrow">
+      <details class="cite-card">
+        <summary class="cite-summary">Cite this page</summary>
+        <div class="cite-body">
+          ${styles.map((s, i) => `
+            <div class="cite-row">
+              <span class="cite-style">${s.name}</span>
+              <p class="cite-text" id="cite-text-${i}">${s.html}</p>
+              <button type="button" class="cite-copy" data-cite-index="${i}" aria-describedby="cite-text-${i}">Copy</button>
+            </div>`).join('')}
+          <p class="cite-note">The access date is today&rsquo;s. Adjust to your style guide as needed.</p>
+        </div>
+      </details>
+    </div>`;
+  main.appendChild(section);
+
+  section.addEventListener('click', async (event) => {
+    const button = event.target.closest('.cite-copy');
+    if (!button) return;
+    const text = styles[Number(button.dataset.citeIndex)].text;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const area = document.createElement('textarea');
+      area.value = text;
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand('copy'); } catch (e) { /* no-op */ }
+      area.remove();
+    }
+    const original = button.textContent;
+    button.textContent = 'Copied';
+    setTimeout(() => { button.textContent = original; }, 1800);
+  });
+})();
