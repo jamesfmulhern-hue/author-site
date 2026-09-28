@@ -5474,3 +5474,106 @@ body.search-open #mulhern-return-ribbon {
   color: var(--color-text-faint, #8a7e6a);
   margin: var(--space-2, 0.5rem) 0 0;
 }
+
+/* ==========================================================================
+   Skip link and "Cite this page" (visitor improvements)
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  left: var(--space-4, 1rem);
+  top: -100px;
+  z-index: 10000;
+  padding: 10px 18px;
+  background: var(--color-surface);
+  color: var(--color-oxblood);
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm, 0.9rem);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.skip-link:focus { top: var(--space-4, 1rem); }
+main:focus { outline: none; }
+
+.cite-this { padding: 0 0 var(--space-12, 3rem); }
+.cite-card {
+  border-top: 1px solid var(--color-gold);
+  border-bottom: 1px solid var(--color-gold);
+  padding: var(--space-4, 1rem) 0;
+}
+.cite-summary {
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm, 0.9rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+}
+.cite-summary::-webkit-details-marker { display: none; }
+.cite-summary::after { content: " \25BE"; letter-spacing: 0; }
+.cite-card[open] .cite-summary::after { content: " \25B4"; }
+.cite-body { margin-top: var(--space-4, 1rem); }
+.cite-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  gap: var(--space-3, 0.75rem);
+  align-items: start;
+  padding: var(--space-3, 0.75rem) 0;
+  border-top: 1px dotted var(--color-border);
+}
+.cite-row:first-child { border-top: none; }
+.cite-style {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs, 0.78rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  padding-top: 0.2em;
+}
+.cite-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.95rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+  max-width: none;
+}
+.cite-copy {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs, 0.78rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  border: 1px solid var(--color-gold);
+  padding: 6px 12px;
+  background: transparent;
+}
+.cite-copy:hover { background: var(--color-surface-2); }
+.cite-note {
+  margin: var(--space-3, 0.75rem) 0 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-xs, 0.8rem);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: none;
+}
+@media (max-width: 560px) {
+  .cite-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .cite-text { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* Appearances: booking checklist */
+.appearance-checklist {
+  margin: var(--space-3, 0.75rem) 0 var(--space-4, 1rem);
+  padding-left: 1.2em;
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.95rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+.appearance-checklist li + li { margin-top: 0.35em; }
+.appearance-checklist strong { color: var(--color-text); font-weight: 600; }
